@@ -8,6 +8,11 @@ package de.thm.iem.CarGate.mvc.controller.menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
+import de.thm.iem.CarGate.lib.FktLib;
+
+
 /**
  * @author yannicklamprecht
  *
@@ -19,7 +24,14 @@ public class QuitController implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		
+		int option = FktLib
+				.beenden(null, "Beenden?", "Wollen Sie das Spiel beenden");
+		if (option == JOptionPane.YES_OPTION) {
+			System.exit(0);
+		}else if(option== JOptionPane.CANCEL_OPTION){
+			return;
+		}
 	}
 
 }

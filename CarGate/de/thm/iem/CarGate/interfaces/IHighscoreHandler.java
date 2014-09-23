@@ -37,20 +37,16 @@ public interface IHighscoreHandler {
 	public IHighscorePlayer getPlayer(String name);
 	
 	/**
-	 * Returns the HighscorePlayers as a tableModel
-	 * needed to display in table
+	 * Returns a 2D Stringarray to fit the Jtable
 	 * @return
 	 */
-	public TableModel getModel();
-	
+	public TableModel toStringTableModel();
 	
 	/**
-	 * 
-	 * Returns the HighscorePlayers as a tableModel
-	 * needed to display in table filtered by userName
-	 * @param userName
+	 * Returns a 2D Stringarray to fit the Jtable by playername
 	 * @return
 	 */
-	public TableModel getModel(String userName);
-
+	public TableModel toStringTableModel(String playername);
+	
+	
 }

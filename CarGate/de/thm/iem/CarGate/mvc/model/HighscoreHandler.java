@@ -5,10 +5,12 @@
  */
 package de.thm.iem.CarGate.mvc.model;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
-import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import de.thm.iem.CarGate.interfaces.IHighscoreHandler;
@@ -18,7 +20,7 @@ import de.thm.iem.CarGate.interfaces.IHighscorePlayer;
  * @author yannicklamprecht
  *
  */
-public class HighscoreHandler implements IHighscoreHandler, TableModel {
+public class HighscoreHandler implements IHighscoreHandler {
 
 	private List<IHighscorePlayer> players;
 
@@ -79,123 +81,51 @@ public class HighscoreHandler implements IHighscoreHandler, TableModel {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see de.thm.iem.CarGate.interfaces.IHighscoreHandler#getModel()
+	 * @see de.thm.iem.CarGate.interfaces.IHighscoreHandler#toStringArray()
 	 */
 	@Override
-	public TableModel getModel() {
-		return this;
+	public TableModel toStringTableModel() {
+
+		String[][] tableList = new String[this.players.size()][2];
+
+		@SuppressWarnings("serial")
+		DefaultTableModel model = new DefaultTableModel(tableList,
+				new String[] { "Name", "Punkte" }) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+
+		return model;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * de.thm.iem.CarGate.interfaces.IHighscoreHandler#getModel(java.lang.String
-	 * )
+	 * de.thm.iem.CarGate.interfaces.IHighscoreHandler#toStringArray(java.lang
+	 * .String)
 	 */
 	@Override
-	public TableModel getModel(String userName) {
-		// TODO Add Searchengine
-		return null;
-	}
+	public TableModel toStringTableModel(String playername) {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.swing.table.TableModel#getRowCount()
-	 */
-	@Override
-	public int getRowCount() {
-		return this.players.size();
-	}
+		List<IHighscorePlayer> copyedList = this.players.stream()
+				.filter(e -> e.getName().equalsIgnoreCase(playername))
+				.collect(Collectors.toList());
+		
+		
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.swing.table.TableModel#getColumnCount()
-	 */
-	@Override
-	public int getColumnCount() {
-		return 2;
-	}
+		@SuppressWarnings("serial")
+		DefaultTableModel model = new DefaultTableModel(
+				new Vector<>(copyedList), new Vector<>(Arrays.asList("Name",
+						"Punkte"))) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.swing.table.TableModel#getColumnName(int)
-	 */
-	@Override
-	public String getColumnName(int columnIndex) {
-		return columnIndex == 0 ? "Name" : "Punkte";
+		return model;
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.swing.table.TableModel#getColumnClass(int)
-	 */
-	@Override
-	public Class<?> getColumnClass(int columnIndex) {
-		return columnIndex == 0 ? String.class : long.class;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.swing.table.TableModel#isCellEditable(int, int)
-	 */
-	@Override
-	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.swing.table.TableModel#getValueAt(int, int)
-	 */
-	@Override
-	public Object getValueAt(int rowIndex, int columnIndex) {
-		return columnIndex == 0 ? this.players.get(rowIndex).getName()
-				: this.players.get(rowIndex).getPoints();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.swing.table.TableModel#setValueAt(java.lang.Object, int, int)
-	 */
-	@Override
-	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		if (aValue instanceof String) {
-			((HighscorePlayer) this.players.get(rowIndex))
-					.setName((String) aValue);
-		} else {
-			((HighscorePlayer) this.players.get(rowIndex))
-					.setPoints((long) aValue);
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * javax.swing.table.TableModel#addTableModelListener(javax.swing.event.
-	 * TableModelListener)
-	 */
-	@Override
-	public void addTableModelListener(TableModelListener l) {
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * javax.swing.table.TableModel#removeTableModelListener(javax.swing.event
-	 * .TableModelListener)
-	 */
-	@Override
-	public void removeTableModelListener(TableModelListener l) {
-	}
-
 }

@@ -5,14 +5,15 @@
  */
 package de.thm.iem.CarGate.mvc.view.menu;
 
+import java.awt.BorderLayout;
+import java.awt.Toolkit;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 
 import de.thm.iem.CarGate.interfaces.IHighscoreHandler;
 import de.thm.iem.CarGate.mvc.controller.menu.highscorepanel.BackListener;
-import de.thm.iem.CarGate.mvc.controller.menu.highscorepanel.SearchButtonListener;
 import de.thm.iem.CarGate.mvc.model.HighScorePanelModel;
 
 /**
@@ -20,41 +21,54 @@ import de.thm.iem.CarGate.mvc.model.HighScorePanelModel;
  *
  */
 @SuppressWarnings("serial")
-public class HighscorePanel extends JDialog{
-	
-		private HighScorePanelModel model;
-		
-		private JTextField searchfield;
-		private JButton searchButton;
-		
-		
-		private JTable highscoreTable;
-		private IHighscoreHandler handler;
-		
-		private JButton back;
-	
-		
-		
-		
-	public HighscorePanel(IHighscoreHandler handler){
-		
+public class HighscorePanel extends JDialog {
+
+	private BorderLayout bl;
+	private HighScorePanelModel model;
+
+	private SearchField search;
+
+	private JTable highscoreTable;
+	private IHighscoreHandler handler;
+
+	private JButton back;
+
+	private int width = Toolkit.getDefaultToolkit().getScreenResolution() * 5;
+	private int height = Toolkit.getDefaultToolkit().getScreenResolution() * 7;
+
+	public HighscorePanel(IHighscoreHandler handler) {
+
+		this.setBounds(Toolkit.getDefaultToolkit().getScreenSize().width / 2
+				- width / 2, Toolkit.getDefaultToolkit().getScreenSize().height
+				/ 2 - height / 2, width, height);
+
 		this.model = new HighScorePanelModel();
-		
-		this.handler=handler;
-		
+
+		this.handler = handler;
+
+		this.bl = new BorderLayout(1, 1);
+
+
 		this.setModal(true);
-		
-		this.searchButton = new JButton(model.getSearch());
-		
-		highscoreTable = new JTable(this.handler.getModel());
-		
-		this.searchButton.addActionListener(new SearchButtonListener(this.handler, searchfield, highscoreTable));
-		
+
+		highscoreTable = new JTable(this.handler.toStringTableModel());
+
+		this.search = new SearchField(handler, model, highscoreTable);
 		this.back = new JButton(model.getBackButton());
-		
-		this.back.addActionListener(new BackListener(this,null));
-		
-		
+
+		this.back.addActionListener(new BackListener(this));
+
+
+		this.bl.addLayoutComponent(back, BorderLayout.SOUTH);
+		this.bl.addLayoutComponent(highscoreTable, BorderLayout.CENTER);
+		this.bl.addLayoutComponent(search, BorderLayout.NORTH);
+
+		this.setLayout(bl);
+
+		this.add(search);
+		this.add(back);
+		this.add(highscoreTable);
+
 		this.setVisible(true);
 	}
 
