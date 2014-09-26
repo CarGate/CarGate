@@ -115,6 +115,7 @@ public class HighscoreHandler implements IHighscoreHandler {
 				.collect(Collectors.toList());
 		
 		
+		
 
 		@SuppressWarnings("serial")
 		DefaultTableModel model = new DefaultTableModel(
