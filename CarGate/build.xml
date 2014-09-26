@@ -12,8 +12,10 @@
    <property name="jar-name"       value="CarGate" />
    <property name="main-class"     value="de/thm/iem/CarGate/mvc/view/MainContainer"/>
    <property name="ini.file"       value="editor.ini"/>
-   <property name="version"        value="1.0" />
-
+   <property name="author"         value="yannicklamprecht" />
+   <property name="matrikel.number" value="980340"/>
+  
+	
    <!-- Build-, Doku-Verzeichnis, 
         jar- und alle class-Dateien loeschen -->
    <target name="clean">
@@ -60,9 +62,13 @@
 
    <!-- jar-Datei erstellen aus den kompilierten Dateien im Build-Ordner -->
    <target name="jar" depends="compile">
-      <jar jarfile="${project.dir}/${jar-name}.jar" basedir="${build.dir}">
+   	 <buildnumber/>
+      <jar jarfile="${project.dir}/jar-build/${jar-name}-${build.number}.jar" basedir="${build.dir}">
            <manifest>
               <attribute name="Main-Class" value="${main-class}"/>
+           	  <attribute name="Compiled-Version" value="${build.number}"/>
+           	  <attribute name="Author" value="${author}"/>
+           	  <attribute name="Matrikelnummer" value="${matrikel.number}"/>
            </manifest>
       </jar>
 
@@ -85,6 +91,7 @@
    </target>
 
    <target name="main" depends="javadoc"/>
+	
 
    <!-- jar-Datei ausfuehren -->
    <target name="runjar" >
