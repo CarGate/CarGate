@@ -13,8 +13,7 @@
 	<property name="jar-name" value="CarGate" />
 	<property name="main-class" value="${split.path}mvc/view/MainContainer" />
 	<property name="ini.file" value="editor.ini" />
-	<property name="author" value="yannicklamprecht" />
-	<property name="matrikel.number" value="980340" />
+	<property name="author" value="Yannick Lamprecht (98 03 40), Dustin Leibnitz (), Christian Kretschmar (), Thorsten Otto ()" />
 
 
 
@@ -67,8 +66,7 @@
 			<manifest>
 				<attribute name="Main-Class" value="${main-class}" />
 				<attribute name="Compiled-Version" value="${build.number}" />
-				<attribute name="Author" value="${author}" />
-				<attribute name="Matrikelnummer" value="${matrikel.number}" />
+				<attribute name="Authoren" value="${author}" />
 			</manifest>
 		</jar>
 
