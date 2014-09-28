@@ -77,15 +77,7 @@
 
 	<!-- Java-Dokumentation erstellen -->
 	<target name="javadoc" depends="jar">
-		<javadoc destdir="${doku.dir}" windowtitle="${jar-name}" encoding="utf-8" charset="utf-8">
-
-			<fileset dir="${project.dir}" includes="${main-class}.java" />
-
-			<packageset dir="${project.dir}">
-				<include name="${source.dir}/**" />
-			</packageset>
-
-		</javadoc>
+		<javadoc sourcepath="${source.dir}" destdir="${doku.dir}" windowtitle="${jar-name}" encoding="utf-8" charset="utf-8"/>
 	</target>
 
 	<target name="main" depends="javadoc" />
