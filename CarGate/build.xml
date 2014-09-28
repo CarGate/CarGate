@@ -1,0 +1,107 @@
+<!-- Autor: Prof. Dr. Manfred Scheer, Technische Hochschule Mittelhessen -->
+
+<project name="CarGate" default="main" basedir=".">
+
+	<!-- Variablen für die Verzeichnisse und sonstige Namen -->
+	<property name="project.dir" value="." />
+	<property name="source.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="split.path" value="de/thm/iem/CarGate"/>
+	<property name="jar.dir" value="${project.dir}/jar-build" />
+	<property name="doku.dir" value="doc" />
+	<property name="resource.dir" value="${source.dir}/${split.path}/resources/" />
+	<property name="jar-name" value="CarGate" />
+	<property name="main-class" value="${split.path}/mvc/view/MainContainer" />
+	<property name="ini.file" value="editor.ini" />
+	<property name="author" value="Yannick Lamprecht (98 03 40), Dustin Leibnitz (), Christian Kretschmar (), Thorsten Otto ()" />
+
+
+
+	<!-- Build-, Doku-Verzeichnis, 
+        jar- und alle class-Dateien loeschen -->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${doku.dir}" />
+
+		<delete>
+			<fileset dir="${project.dir}" includes="**/*.class" />
+		</delete>
+	</target>
+
+	<target name="jarclean">
+		<delete dir="${jar.dir}" />
+		<delete file="build.number"/>
+	</target>
+
+	<!-- Build-, Doku-Verzeichnis anlegen -->
+	<target name="makedir" depends="clean">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${doku.dir}" />
+	</target>
+
+	<!-- Ressourcen in den Build-Ordner kopieren -->
+	<target name="copyres" depends="makedir">
+		<copy todir="${build.dir}/{resource.dir}">
+			<fileset dir="${resource.dir}" includes="*.properties" />
+		</copy>
+	</target>
+
+	<!-- ini-File in den Build-Ordner kopieren -->
+	<target name="copyini" depends="copyres">
+		<!-- <copy file="${project.dir}/${ini.file}" todir="${build.dir}"/> -->
+		<copy todir="${build.dir}">
+			<fileset dir="${project.dir}" includes="*.ini" />
+		</copy>
+	</target>
+
+	<!-- Kompilieren -->
+	<target name="compile" depends="copyini">
+		<javac srcdir="${project.dir}" destdir="${build.dir}" encoding="utf-8" includeAntRuntime="false" />
+	</target>
+
+	<!-- jar-Datei erstellen aus den kompilierten Dateien im Build-Ordner -->
+	<target name="jar" depends="compile">
+		<buildnumber />
+		<tstamp />
+		<jar jarfile="${jar.dir}/${jar-name}-${build.number}.jar" basedir="${build.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}" />
+				<attribute name="Compiled-Version" value="${build.number}" />
+				<attribute name="Authoren" value="${author}" />
+				<attribute name="Date-Day" value="${DSTAMP}" />
+				<attribute name="Date-Hour" value="${TSTAMP}"/>
+			</manifest>
+		</jar>
+
+	</target>
+
+	<!-- Java-Dokumentation erstellen -->
+	<target name="javadoc" depends="jar">
+		<javadoc destdir="${doku.dir}" windowtitle="${jar-name}" encoding="utf-8" charset="utf-8">
+
+			<fileset dir="${project.dir}" includes="${main-class}.java" />
+
+			<packageset dir="${project.dir}">
+				<include name="${source.dir}/**" />
+			</packageset>
+
+		</javadoc>
+	</target>
+
+	<target name="main" depends="javadoc" />
+
+
+	<!-- jar-Datei ausfuehren -->
+	<target name="runjar">
+		<java jar="${project.dir}/${jar-name}.jar" fork="true" />
+	</target>
+
+	<!-- class-Dateien im Build-Ordner ausfuehren -->
+	<target name="runbuild">
+		<java classname="${main-class}" fork="true">
+			<classpath>
+				<pathelement location="${build.dir}" />
+			</classpath>
+		</java>
+	</target>
+</project>
