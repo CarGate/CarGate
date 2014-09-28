@@ -24,6 +24,7 @@ public class CarField extends JPanel{
 	
 	
 	
+	
 	private Thread gameThread;
 	private GameThread runnable;
 	

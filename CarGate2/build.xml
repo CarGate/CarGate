@@ -4,13 +4,14 @@
 
 	<!-- Variablen für die Verzeichnisse und sonstige Namen -->
 	<property name="project.dir" value="." />
-	<property name="source.dir" value="src/de" />
+	<property name="source.dir" value="src/" />
 	<property name="build.dir" value="build" />
+	<property name="split.path" value="de/thm/iem/CarGate/"/>
 	<property name="jar.dir" value="${project.dir}/jar-build" />
 	<property name="doku.dir" value="doc" />
-	<property name="resource.dir" value="thm/iem/CarGate/resources" />
+	<property name="resource.dir" value="${source.dir}${split.path}resources/" />
 	<property name="jar-name" value="CarGate" />
-	<property name="main-class" value="src/de/thm/iem/CarGate/mvc/view/MainContainer" />
+	<property name="main-class" value="${split.path}mvc/view/MainContainer" />
 	<property name="ini.file" value="editor.ini" />
 	<property name="author" value="yannicklamprecht" />
 	<property name="matrikel.number" value="980340" />
@@ -37,13 +38,12 @@
 	<target name="makedir" depends="clean">
 		<mkdir dir="${build.dir}" />
 		<mkdir dir="${doku.dir}" />
-		<mkdir dir="${build.dir}/${source.dir}/${resource.dir}" />
 	</target>
 
 	<!-- Ressourcen in den Build-Ordner kopieren -->
 	<target name="copyres" depends="makedir">
-		<copy todir="${build.dir}/${source.dir}/${resource.dir}">
-			<fileset dir="${source.dir}/${resource.dir}" includes="*.properties" />
+		<copy todir="${build.dir}/{resource.dir}">
+			<fileset dir="${resource.dir}" includes="*.properties" />
 		</copy>
 	</target>
 
