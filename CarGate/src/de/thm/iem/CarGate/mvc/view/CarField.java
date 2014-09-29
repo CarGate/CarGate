@@ -30,22 +30,17 @@ public class CarField extends JPanel{
 	
 	
 	public CarField(){
-		this.gameObjects = new Vector<>();
-		this.runnable = new GameThread(gameObjects, 20);
-		this.gameThread = new Thread(this.runnable);
+        this.gameObjects = new Vector<GameObject>();
+        this.runnable = new GameThread(gameObjects, 20);
+        this.gameThread = new Thread(this.runnable);
 		
 		this.gameThread.start();
 		this.setVisible(true);
-		
-		
-		this.gameObjects.add(new Gate(new Point(this.getBounds().x,this.getBounds().y), gameObjects));
-		
-	}
-	
-	
-	
-	
-	
-	
+
+
+        this.gameObjects.add(new Gate(new Point(this.getBounds().x - 20, this.getBounds().y / 2), gameObjects));
+
+    }
+
 
 }

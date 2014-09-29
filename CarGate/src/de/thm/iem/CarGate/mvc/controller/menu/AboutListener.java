@@ -5,6 +5,7 @@
  */
 package de.thm.iem.CarGate.mvc.controller.menu;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,9 +20,8 @@ public class AboutListener implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-		
-	}
+        JOptionPane.showMessageDialog(null, "Nothing here", "About us", JOptionPane.INFORMATION_MESSAGE);
+
+    }
 
 }

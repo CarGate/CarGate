@@ -13,8 +13,9 @@
 	<property name="jar-name" value="CarGate" />
 	<property name="main-class" value="${split.path}/mvc/view/MainContainer" />
 	<property name="ini.file" value="editor.ini" />
-    <property name="author"
-              value="${line.separator}Yannick Lamprecht(98 03 40), Dustin Leibnitz(97 97 59),${line.separator}Christian Kretschmar(97 90 05), Thorsten Otto(** ** **)"/>
+    <property name="company.name" value="CarGate"/>
+    <property name="authors"
+              value="Yannick Lamprecht(98 03 40), Dustin Leibnitz(97 97 59),${line.separator}Christian Kretschmar(97 90 05), Thorsten Otto(** ** **)"/>
 
 
 
@@ -70,7 +71,6 @@
 				<attribute name="Compiled-Version" value="${build.number}" />
                 <attribute name="Date" value="${TODAY}"/>
                 <attribute name="License" value="Creative Commons: BY-NC-ND"/>
-                <attribute name="Autoren" value="$author"/>
 			</manifest>
 		</jar>
 

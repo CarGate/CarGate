@@ -37,10 +37,10 @@ public class Menu extends JPanel{
 	private JMenuItem quit;
 	
 	private JMenu options;
-	private JMenu about;
-	
-	private StartController startController;
-	private HighscoreButtonController highscoreButtonController;
+    private JMenuItem about;
+
+    private StartController startController;
+    private HighscoreButtonController highscoreButtonController;
 	private QuitController quitController;
 	
 	private OptionListener optionsListener;
@@ -65,11 +65,11 @@ public class Menu extends JPanel{
 		quit = new JMenuItem(labels.getQuitLabel());
 		
 		options = new JMenu(labels.getOptionLabel());
-		about = new JMenu(labels.getAboutLabel());
-		
-		
-		fl.addLayoutComponent(gameDropdown.getName(), gameDropdown);
-		fl.addLayoutComponent(options.getName(), options);
+        about = new JMenuItem(labels.getAboutLabel());
+
+
+        fl.addLayoutComponent(gameDropdown.getName(), gameDropdown);
+        fl.addLayoutComponent(options.getName(), options);
 		fl.addLayoutComponent(about.getName(), about);
 		
 		

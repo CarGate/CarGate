@@ -95,10 +95,10 @@ public class FktLib {
 	
 	/**
 	 * Liest das Textfile Zeilenweise aus und gibt den text zurück.
-	 * 
-	 * @param f file das gelesen werden soll
-	 * @return text der im File enthalten ist
-	 * @throws IOException
+     *
+     * @param datei file das gelesen werden soll
+     * @return text der im File enthalten ist
+     * @throws IOException
 	 */
 	public static String readFile(File datei) throws IOException{
 		String zeile;
