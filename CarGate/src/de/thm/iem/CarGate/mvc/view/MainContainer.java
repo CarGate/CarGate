@@ -9,7 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import de.thm.iem.CarGate.mvc.model.HighscoreHandler;
 import de.thm.iem.CarGate.mvc.view.menu.Menu;
@@ -29,7 +29,20 @@ public class MainContainer extends JFrame{
 	
 	
 	public MainContainer(){
-		this.setBounds(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+
+        this.setBounds(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.controlls = new Menu(new HighscoreHandler());
@@ -42,7 +55,7 @@ public class MainContainer extends JFrame{
 		
 		this.controlls.setVisible(true);
 		this.gameField.setVisible(true);
-		
+
 		
 		this.setLayout(bl);
 		
