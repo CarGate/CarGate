@@ -13,7 +13,8 @@
 	<property name="jar-name" value="CarGate" />
 	<property name="main-class" value="${split.path}/mvc/view/MainContainer" />
 	<property name="ini.file" value="editor.ini" />
-	<property name="author" value="Yannick Lamprecht (98 03 40), Dustin Leibnitz (), Christian Kretschmar (), Thorsten Otto ()" />
+    <property name="author"
+              value="${line.separator}Yannick Lamprecht(98 03 40), Dustin Leibnitz(97 97 59),${line.separator}Christian Kretschmar(97 90 05), Thorsten Otto(** ** **)"/>
 
 
 
@@ -28,7 +29,7 @@
 		</delete>
 	</target>
 
-	<target name="jarclean">
+    <target name="clean-jar">
 		<delete dir="${jar.dir}" />
 		<delete file="build.number"/>
 	</target>
@@ -67,9 +68,9 @@
 			<manifest>
 				<attribute name="Main-Class" value="${main-class}" />
 				<attribute name="Compiled-Version" value="${build.number}" />
-				<attribute name="Authoren" value="${author}" />
-				<attribute name="Date-Day" value="${DSTAMP}" />
-				<attribute name="Date-Hour" value="${TSTAMP}"/>
+                <attribute name="Date" value="${TODAY}"/>
+                <attribute name="License" value="Creative Commons: BY-NC-ND"/>
+                <attribute name="Autoren" value="$author"/>
 			</manifest>
 		</jar>
 
