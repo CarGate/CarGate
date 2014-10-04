@@ -5,13 +5,10 @@
  */
 package de.thm.iem.CarGate.mvc.view;
 
-import java.awt.Point;
-import java.util.Vector;
-
-import javax.swing.JPanel;
-
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
-import de.thm.iem.CarGate.mvc.view.gameObjects.Gate;
+
+import javax.swing.*;
+import java.util.Vector;
 
 /**
  * @author yannicklamprecht
@@ -38,7 +35,7 @@ public class CarField extends JPanel{
 		this.setVisible(true);
 
 
-        this.gameObjects.add(new Gate(new Point(this.getBounds().x - 20, this.getBounds().y / 2), gameObjects));
+        //this.gameObjects.add(new Gate(new Point(this.getBounds().x - 20, this.getBounds().y / 2), gameObjects));
 
     }
 

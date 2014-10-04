@@ -9,20 +9,20 @@ package de.thm.iem.CarGate.interfaces;
  * @author yannicklamprecht
  *
  */
-public interface ICloseable {
-	
+public interface ICloseable extends ISetGameObject {
+
 	/**
-	 * Set the close state of an object, like a door, trapdoor, gardendoor
+     * Displays the close state of an object implementing the interface
+     *
+     * @return isClosed
+     */
+    public boolean isClosed();
+
+    /**
+     * Set the close state of an object, like a door, trapdoor, gardendoor
 	 * @param isClosed
 	 */
 	public void setClosed(boolean isClosed);
-	
-	/**
-	 * Displays the close state of an object implementing the interface
-	 * 
-	 * @return isClosed
-	 */
-	public boolean isClosed();
 	
 
 }

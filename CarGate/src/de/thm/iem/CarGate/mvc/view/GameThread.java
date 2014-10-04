@@ -5,10 +5,10 @@
  */
 package de.thm.iem.CarGate.mvc.view;
 
+import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
+
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
-
-import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
 /**
  * @author yannicklamprecht
@@ -20,28 +20,27 @@ public class GameThread implements Runnable{
 	private Vector<GameObject> objects;
 	private boolean running = true;
 
-	/* (non-Javadoc)
-	 * @see java.lang.Runnable#run()
-	 */
+    public GameThread(Vector<GameObject> objects, int ticks) {
+        this.objects = objects;
+        this.ticks = ticks;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Runnable#run()
+     */
 	@Override
 	public void run() {
-		
+
 		do{
-			GameObject.update(objects);
-			try {
-				Thread.sleep(TimeUnit.SECONDS.toMillis(1/ticks));
+            GameObject.repaint(objects);
+            try {
+                Thread.sleep(TimeUnit.SECONDS.toMillis(1/ticks));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}while(running);
-		
-	}
-	
-	
-	public GameThread(Vector<GameObject> objects, int ticks){
-		this.objects = objects;
-		this.ticks=ticks;
-	}
+
+    }
 	
 	public void setRunning(boolean running){
 		this.running=running;

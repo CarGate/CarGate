@@ -5,36 +5,28 @@
  */
 package de.thm.iem.CarGate.mvc.view.gameObjects.blocks;
 
-import java.awt.Point;
-import java.util.Vector;
-
-import de.thm.iem.CarGate.interfaces.ICar;
 import de.thm.iem.CarGate.interfaces.IEffectable;
 import de.thm.iem.CarGate.interfaces.IPlaceable;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
+
+import java.awt.*;
+import java.util.Vector;
 
 /**
  * @author yannicklamprecht
  *
  */
 @SuppressWarnings("serial")
-public class Spike extends GameObject implements IPlaceable, IEffectable {
+public class Spike extends GameObject implements IPlaceable {
+
+    private IEffectable spikeEffect;
 
 	/**
 	 * @param location
-	 * @param skin
 	 * @param gameObjects
 	 */
 	protected Spike(Point location, Vector<GameObject> gameObjects) {
 		super(location, Spike.class.getName(),null, gameObjects);
-	}
-
-	/* (non-Javadoc)
-	 * @see de.thm.iem.CarGate.interfaces.IEffectable#playEffect(de.thm.iem.CarGate.interfaces.ICar)
-	 */
-	@Override
-	public void playEffect(ICar car) {
-		car.setSpeed(car.getSpeed()/2);
 	}
 
 	/* (non-Javadoc)

@@ -5,29 +5,36 @@
  */
 package de.thm.iem.CarGate.mvc.view.gameObjects.items;
 
-import java.awt.Point;
-import java.util.Vector;
-
 import de.thm.iem.CarGate.interfaces.ICar;
 import de.thm.iem.CarGate.interfaces.ICollectable;
 import de.thm.iem.CarGate.interfaces.IEffectable;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
+
+import java.awt.*;
+import java.util.Vector;
 
 /**
  * @author yannicklamprecht
  *
  */
 @SuppressWarnings("serial")
-public class Nitro extends GameObject implements IEffectable, ICollectable{
+public class Nitro extends GameObject implements ICollectable {
+
+    private IEffectable nitroEffect;
+
 
 	/**
 	 * @param location
-	 * @param skin
 	 * @param gameObjects
 	 */
 	public Nitro(Point location,Vector<GameObject> gameObjects) {
 		super(location, Nitro.class.getName(),null, gameObjects);
 	}
+
+
+    public void addEffect(IEffectable effect) {
+        this.nitroEffect = effect;
+    }
 
 	/* (non-Javadoc)
 	 * @see de.thm.iem.CarGate.interfaces.ICollectable#onCollect(de.thm.iem.CarGate.interfaces.ICar)
@@ -35,29 +42,8 @@ public class Nitro extends GameObject implements IEffectable, ICollectable{
 	@Override
 	public void onCollect(ICar car) {
 		this.setVisible(false);
-		this.playEffect(car);
-	}
+        nitroEffect.playEffect(car);
+    }
 
-	/* (non-Javadoc)
-	 * @see de.thm.iem.CarGate.interfaces.IEffectable#playEffect(de.thm.iem.CarGate.interfaces.ICar)
-	 */
-	@Override
-	public void playEffect(ICar car) {
-		
-	new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				car.setSpeed(15/10);
-				try {
-					Thread.sleep(1000* 60);
-				} catch (InterruptedException e) {
-				}
-				car.setSpeed(2/3);
-				
-			}
-		}).start();
-		
-	}
 
 }

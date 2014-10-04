@@ -5,13 +5,12 @@
  */
 package de.thm.iem.CarGate.mvc.view.gameObjects.cars;
 
-import java.awt.Image;
-import java.awt.Point;
-import java.util.Vector;
-
 import de.thm.iem.CarGate.enums.Direction;
 import de.thm.iem.CarGate.interfaces.ICar;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
+
+import java.awt.*;
+import java.util.Vector;
 
 /**
  * @author yannicklamprecht
@@ -25,7 +24,6 @@ public class Car extends GameObject implements ICar {
 
 	/**
 	 * @param location
-	 * @param skin
 	 * @param gameObjects
 	 */
 	protected Car(Point location,Vector<GameObject> gameObjects, Direction defaultDirection) {
@@ -46,24 +44,24 @@ public class Car extends GameObject implements ICar {
 	}
 
 	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.thm.iem.CarGate.interfaces.ICar#setSpeed(double)
-	 */
-	@Override
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+     * (non-Javadoc)
+	 *
 	 * @see de.thm.iem.CarGate.interfaces.ICar#getSpeed()
 	 */
 	@Override
-	public int getSpeed() {
-		return this.speed;
-	}
+    public int getSpeed() {
+        return this.speed;
+    }
+
+	/*
+     * (non-Javadoc)
+	 *
+	 * @see de.thm.iem.CarGate.interfaces.ICar#setSpeed(double)
+	 */
+	@Override
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 
 	/*
 	 * (non-Javadoc)
@@ -73,20 +71,20 @@ public class Car extends GameObject implements ICar {
 	@Override
 	public void setSkin(Image skin) {
 		this.skin = skin;
-		this.update();
-	}
+        this.repaint();
+    }
 
 	@Override
-	public void update() {
-		//TODO Implement location checking for moving
-		//this.gameObjects.stream().filter( e -> e.getLocation().equals(new Vector2I(getLocation()).add(direction).to))
-		
-		this.setLocation(new Point(this.getLocation().x
-				+ this.direction.getVelocity2I().getX() * speed, this
+    public void repaint() {
+        //TODO Implement location checking for moving
+        //this.gameObjects.stream().filter( e -> e.getLocation().equals(new Vector2Integer(getLocation()).add(direction).to))
+
+        this.setLocation(new Point(this.getLocation().x
+                + this.direction.getVelocity2I().getX() * speed, this
 				.getLocation().y
 				+ this.direction.getVelocity2I().getY()
 				* speed));
-		super.update();
-	}
+        super.repaint();
+    }
 
 }

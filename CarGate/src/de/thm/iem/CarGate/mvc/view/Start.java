@@ -5,32 +5,29 @@
  */
 package de.thm.iem.CarGate.mvc.view;
 
-import java.awt.BorderLayout;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-
-import javax.swing.JFrame;
-
 import de.thm.iem.CarGate.mvc.model.HighscoreHandler;
 import de.thm.iem.CarGate.mvc.view.menu.Menu;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author yannicklamprecht
  *
  */
 @SuppressWarnings("serial")
-public class MainContainer extends JFrame{
-	
+public class Start extends JFrame {
 
-	private BorderLayout bl = new BorderLayout(3, 3);
-	
-	private Menu controlls;
+
+    private BorderLayout bl = new BorderLayout(3, 3);
+
+    private Menu controlls;
 	private CarField gameField;
-	
-	
-	public MainContainer(){
-		this.setBounds(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-		this.setResizable(false);
+
+
+    public Start() {
+        this.setBounds(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+        this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.controlls = new Menu(new HighscoreHandler());
 		this.bl.addLayoutComponent(controlls, BorderLayout.NORTH);
@@ -45,7 +42,6 @@ public class MainContainer extends JFrame{
 		
 		
 		this.setLayout(bl);
-		
 		this.setVisible(true);
 	}
 	
@@ -55,8 +51,8 @@ public class MainContainer extends JFrame{
 	
 	
 	public static void main(String[] args){
-		new MainContainer();
-	}
-	
-	
+        new Start();
+    }
+
+
 }

@@ -5,22 +5,19 @@
  */
 package de.thm.iem.CarGate.mvc.view.gameObjects.blocks;
 
-import java.awt.Image;
-import java.awt.Point;
-import java.util.Vector;
-
-import de.thm.iem.CarGate.enums.Direction;
-import de.thm.iem.CarGate.interfaces.ICar;
-import de.thm.iem.CarGate.interfaces.IEffectable;
 import de.thm.iem.CarGate.interfaces.IPlaceable;
+import de.thm.iem.CarGate.mvc.controller.gameobject.effects.IceEffect;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
+
+import java.awt.*;
+import java.util.Vector;
 
 /**
  * @author yannicklamprecht
  *
  */
 @SuppressWarnings("serial")
-public class IcePlane extends GameObject implements IPlaceable, IEffectable{
+public class IcePlane extends GameObject implements IPlaceable {
 
 	/**
 	 * @param location
@@ -29,8 +26,8 @@ public class IcePlane extends GameObject implements IPlaceable, IEffectable{
 	 */
 	public IcePlane(Point location, Image skin, Vector<GameObject> gameObjects) {
 		super(location, IcePlane.class.getName(),null, gameObjects);
-		// TODO Auto-generated constructor stub
-	}
+        this.setEffectable(new IceEffect(this));
+    }
 
 	/* (non-Javadoc)
 	 * @see de.thm.iem.CarGate.interfaces.IPlaceable#place(java.awt.Point)
@@ -39,14 +36,4 @@ public class IcePlane extends GameObject implements IPlaceable, IEffectable{
 	public void place(Point location) {
 		this.setLocation(location);
 	}
-
-	/* (non-Javadoc)
-	 * @see de.thm.iem.CarGate.interfaces.IEffectable#playEffect(de.thm.iem.CarGate.interfaces.ICar)
-	 */
-	@Override
-	public void playEffect(ICar car) {
-		car.setSpeed(10);
-		car.setDirection(Direction.random());
-	}
-
 }

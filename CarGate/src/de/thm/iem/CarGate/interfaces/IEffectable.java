@@ -5,16 +5,25 @@
  */
 package de.thm.iem.CarGate.interfaces;
 
+import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
+
 /**
  * @author yannicklamprecht
  *
  */
-public interface IEffectable {
-	
-	/**
-	 * can play effect on car
+public interface IEffectable extends ISetGameObject {
+
+    /**
+     * can play effect on car
 	 * @param car
 	 */
 	public void playEffect(ICar car);
-	
+
+
+    /**
+     * Will set the GameObject
+     *
+     * @param gameObject
+     */
+    public void setGameObject(GameObject gameObject);
 }

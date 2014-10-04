@@ -5,61 +5,36 @@
  */
 package de.thm.iem.CarGate.mvc.view.gameObjects;
 
-import java.awt.Image;
-import java.awt.Point;
+import de.thm.iem.CarGate.interfaces.ICloseable;
+import de.thm.iem.CarGate.mvc.controller.gameobject.abbilities.Close;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
-
-import javax.imageio.ImageIO;
-
-import de.thm.iem.CarGate.interfaces.ICloseable;
 
 /**
  * @author yannicklamprecht
  *
  */
 @SuppressWarnings("serial")
-public class Gate extends GameObject implements ICloseable {
+public class Gate extends GameObject {
 
-	private Image skinClosed;
-	private Image skinOpened;
+    private ICloseable closeable;
 
 	/**
 	 * @param location
-	 * @param skin
 	 * @param gameObjects
 	 */
 	public Gate(Point location, Vector<GameObject> gameObjects) {
 		super(location, Gate.class.getName(), "_closed", gameObjects);
-		try {
-			
-			//this.skinClosed = ImageIO.read(new File("./de/thm/iem/CarGate/resourses/view/Gate_closed.png"));
-			this.skinClosed = ImageIO.read(new File("./de/thm/iem/CarGate/resourses/view/Gate_opened.png"));
-			
-			//this.skinClosed = ImageIO.read(Gate.class.getResourceAsStream(new Pathreplacer(Gate.class.getName()).replace("_closed")));
-			//this.skinOpened = ImageIO.read(Gate.class.getResourceAsStream(new Pathreplacer(Gate.class.getName()).replace("_opened")));
-		} catch (IOException e) {
-		}
-	}
+        try {
+            this.closeable = new Close(ImageIO.read(new File("./de/thm/iem/CarGate/resourses/view/Gate_closed.png")), ImageIO.read(new File("./de/thm/iem/CarGate/resourses/view/Gate_opened.png")));
+            //new Close(ImageIO.read(Gate.class.getResourceAsStream(new Pathreplacer(Gate.class.getName()).replace("_closed"))),ImageIO.read(Gate.class.getResourceAsStream(new Pathreplacer(Gate.class.getName()).replace("_opened"))));
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.thm.iem.CarGate.interfaces.ICloseable#setClosed(boolean)
-	 */
-	@Override
-	public void setClosed(boolean isClosed) {
-		super.skin = isClosed ? skinClosed : skinOpened;
-	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.thm.iem.CarGate.interfaces.ICloseable#isClosed()
-	 */
-	@Override
-	public boolean isClosed() {
-		return this.skin.equals(this.skinClosed);
-	}
+        } catch (IOException e) {
+        }
+    }
 }

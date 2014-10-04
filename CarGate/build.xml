@@ -11,7 +11,7 @@
 	<property name="doku.dir" value="doc" />
 	<property name="resource.dir" value="${source.dir}/${split.path}/resources/" />
 	<property name="jar-name" value="CarGate" />
-	<property name="main-class" value="${split.path}/mvc/view/MainContainer" />
+    <property name="main-class" value="${split.path}/mvc/view/Start"/>
 	<property name="ini.file" value="editor.ini" />
     <property name="company.name" value="CarGate"/>
     <property name="authors"

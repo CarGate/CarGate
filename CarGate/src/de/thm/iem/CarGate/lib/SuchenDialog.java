@@ -7,17 +7,10 @@
  */
 package de.thm.iem.CarGate.lib;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Frame;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  * Das Search Objekt behandelt in Eingabe eines Suchfeldes
@@ -104,29 +97,28 @@ public class SuchenDialog extends JDialog {
 	}
 
 	/**
-	 * Setzt den text der gesucht werden soll
-	 * 
-	 * @param text
+     * return the searchtext
+     * @return searchtext
+     */
+    public String getSearchText() {
+        return (this.searchField.getText() == null) ? "" : this.searchField
+                .getText();
+    }
+
+    /**
+     * Setzt den text der gesucht werden soll
+     *
+     * @param text
 	 */
 	public void setSearchText(String text) {
 		this.searchField.setText(text);
 	}
 
 	/**
-	 * Gibt den Suchtext zurück
-	 * @return searchtext
-	 */
-	public String getSearchText() {
-		return (this.searchField.getText() == null) ? "" : this.searchField
-				.getText();
-	}
-
-	
-	/**
-	 * Gibt die buttonaction zurück
-	 * DEFAUT: BUTTON_ACTIONS.CANCEL_BUTTON
-	 * @return action
-	 */
+     * returns the buttonaction
+     * DEFAULT: BUTTON_ACTIONS.CANCEL_BUTTON
+     * @return action
+     */
 	public BUTTON_ACTIONS getButton() {
 		return action;
 	}
