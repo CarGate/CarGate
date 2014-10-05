@@ -20,6 +20,19 @@ public class IceEffect implements IEffectable {
     public void playEffect(ICar car) {
         car.setSpeed(10);
         car.setDirection(Direction.random());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                car.setSpeed(1);
+            }
+        }).start();
+
     }
 
     @Override

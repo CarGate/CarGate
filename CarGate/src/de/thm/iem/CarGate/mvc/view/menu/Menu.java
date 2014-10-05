@@ -5,20 +5,12 @@
  */
 package de.thm.iem.CarGate.mvc.view.menu;
 
-import java.awt.FlowLayout;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-
 import de.thm.iem.CarGate.interfaces.IHighscoreHandler;
-import de.thm.iem.CarGate.mvc.controller.menu.AboutListener;
-import de.thm.iem.CarGate.mvc.controller.menu.HighscoreButtonController;
-import de.thm.iem.CarGate.mvc.controller.menu.OptionListener;
-import de.thm.iem.CarGate.mvc.controller.menu.QuitController;
-import de.thm.iem.CarGate.mvc.controller.menu.StartController;
+import de.thm.iem.CarGate.mvc.controller.menu.*;
 import de.thm.iem.CarGate.mvc.model.MenuDataHolder;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author yannicklamprecht
@@ -35,8 +27,8 @@ public class Menu extends JPanel{
 	private JMenuItem start;
 	private JMenuItem highscore;
 	private JMenuItem quit;
-	
-	private JMenu options;
+
+    private JMenuItem options;
     private JMenuItem about;
 
     private StartController startController;
@@ -63,8 +55,8 @@ public class Menu extends JPanel{
 		start = new JMenuItem(labels.getStartLabel());
 		highscore = new JMenuItem(labels.getHighscoreLabel());
 		quit = new JMenuItem(labels.getQuitLabel());
-		
-		options = new JMenu(labels.getOptionLabel());
+
+        options = new JMenuItem(labels.getOptionLabel());
         about = new JMenuItem(labels.getAboutLabel());
 
 

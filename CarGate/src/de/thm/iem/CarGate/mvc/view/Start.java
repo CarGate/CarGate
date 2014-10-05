@@ -6,6 +6,7 @@
 package de.thm.iem.CarGate.mvc.view;
 
 import de.thm.iem.CarGate.mvc.model.HighscoreHandler;
+import de.thm.iem.CarGate.mvc.view.gameobjectmenue.GOMenue;
 import de.thm.iem.CarGate.mvc.view.menu.Menu;
 
 import javax.swing.*;
@@ -23,25 +24,40 @@ public class Start extends JFrame {
 
     private Menu controlls;
 	private CarField gameField;
+    private GOMenue menue;
+
 
 
     public Start() {
-        this.setBounds(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+
+
+        Rectangle size = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+
+        size.setSize(size.width, size.height - (size.height / 100 * 8));
+
+        this.setBounds(size);
         this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.controlls = new Menu(new HighscoreHandler());
-		this.bl.addLayoutComponent(controlls, BorderLayout.NORTH);
+
+
+        this.controlls = new Menu(new HighscoreHandler());
+        this.bl.addLayoutComponent(controlls, BorderLayout.NORTH);
 		this.add(controlls);
-		
+
+        this.menue = new GOMenue();
+        this.bl.addLayoutComponent(menue, BorderLayout.SOUTH);
+        this.add(menue);
+
 		this.gameField = new CarField();
 		this.bl.addLayoutComponent(gameField, BorderLayout.CENTER);
 		this.add(gameField);
-		
-		this.controlls.setVisible(true);
+
+
+        this.controlls.setVisible(true);
 		this.gameField.setVisible(true);
-		
-		
-		this.setLayout(bl);
+        this.menue.setVisible(true);
+
+        this.setLayout(bl);
 		this.setVisible(true);
 	}
 	

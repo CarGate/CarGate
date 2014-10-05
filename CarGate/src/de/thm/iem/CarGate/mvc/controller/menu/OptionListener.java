@@ -5,6 +5,8 @@
  */
 package de.thm.iem.CarGate.mvc.controller.menu;
 
+import de.thm.iem.CarGate.lib.FktLib;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,7 +22,7 @@ public class OptionListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-
+        FktLib.frage(null, "????", "Soll da noch etwas hin?");
     }
 
 

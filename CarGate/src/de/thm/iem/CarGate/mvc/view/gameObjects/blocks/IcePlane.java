@@ -21,11 +21,10 @@ public class IcePlane extends GameObject implements IPlaceable {
 
 	/**
 	 * @param location
-	 * @param skin
 	 * @param gameObjects
 	 */
-	public IcePlane(Point location, Image skin, Vector<GameObject> gameObjects) {
-		super(location, IcePlane.class.getName(),null, gameObjects);
+    public IcePlane(Point location, Vector<GameObject> gameObjects) {
+        super(location, IcePlane.class.getName(),null, gameObjects);
         this.setEffectable(new IceEffect(this));
     }
 

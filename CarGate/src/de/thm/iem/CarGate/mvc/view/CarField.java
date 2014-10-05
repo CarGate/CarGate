@@ -18,25 +18,23 @@ import java.util.Vector;
 public class CarField extends JPanel{
 	
 	private Vector<GameObject> gameObjects;
-	
-	
-	
-	
-	private Thread gameThread;
+
+
+    private Thread gameThread;
 	private GameThread runnable;
 	
 	
 	public CarField(){
         this.gameObjects = new Vector<GameObject>();
         this.runnable = new GameThread(gameObjects, 20);
+
+
         this.gameThread = new Thread(this.runnable);
 		
 		this.gameThread.start();
-		this.setVisible(true);
-
-
         //this.gameObjects.add(new Gate(new Point(this.getBounds().x - 20, this.getBounds().y / 2), gameObjects));
 
+        this.setVisible(true);
     }
 
 
