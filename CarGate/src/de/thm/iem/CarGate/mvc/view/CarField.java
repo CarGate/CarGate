@@ -44,5 +44,9 @@ public class CarField extends JPanel{
         this.setVisible(true);
     }
 
+    public Thread getGameThread(){
+        return gameThread;
+    }
+
 
 }

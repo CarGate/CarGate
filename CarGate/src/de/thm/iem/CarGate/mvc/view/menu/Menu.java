@@ -8,6 +8,7 @@ package de.thm.iem.CarGate.mvc.view.menu;
 import de.thm.iem.CarGate.interfaces.IHighscoreHandler;
 import de.thm.iem.CarGate.mvc.controller.menu.*;
 import de.thm.iem.CarGate.mvc.model.MenuDataHolder;
+import de.thm.iem.CarGate.mvc.view.CarField;
 
 import javax.swing.*;
 import java.awt.*;
@@ -76,7 +77,7 @@ public class Menu extends JPanel{
 		this.add(mainMenu);
 		
 		
-		this.startController = new StartController();
+		this.startController = new StartController(CarField.field.getGameThread());
 		this.highscoreButtonController = new HighscoreButtonController(this.handler);
 		this.quitController = new QuitController();
 		
