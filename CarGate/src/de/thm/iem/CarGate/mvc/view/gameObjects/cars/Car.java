@@ -87,4 +87,6 @@ public class Car extends GameObject implements ICar {
         super.repaint();
     }
 
+    //TODO CollisionDetection method
+
 }
