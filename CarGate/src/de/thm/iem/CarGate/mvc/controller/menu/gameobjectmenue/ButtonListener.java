@@ -1,27 +1,46 @@
 package de.thm.iem.CarGate.mvc.controller.menu.gameobjectmenue;
 
-import de.thm.iem.CarGate.lib.FktLib;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.Vector;
 
 /**
  * Created by yannicklamprecht on 05.10.14.
  */
-public class ButtonListener implements ActionListener {
+public class ButtonListener implements MouseListener {
 
-    private Class<? extends GameObject> prefab;
+    private Vector<GameObject> prefab;
 
-    public ButtonListener(Class<? extends GameObject> prefab) {
+    public ButtonListener(Vector<GameObject> prefab) {
         this.prefab = prefab;
     }
 
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void mouseClicked(MouseEvent e) {
 
-        FktLib.frage(null, "Test", prefab.getName());
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
 
     }
 }

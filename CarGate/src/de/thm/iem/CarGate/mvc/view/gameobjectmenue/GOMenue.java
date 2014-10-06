@@ -15,24 +15,23 @@ import java.util.Vector;
 public class GOMenue extends JPanel {
 
     private FlowLayout flowLayout;
-    private Vector<JButton> buttons;
-    private Vector<Class<? extends GameObject>> classes;
+    private Vector<GameObject> objects;
 
 
     public GOMenue() {
-        classes = new Vector<>();
-        buttons = new Vector<>();
+        objects = new Vector<>();
 
 
-        classes.add(IcePlane.class);
-        classes.add(Spike.class);
+        objects.add(new IcePlane(this.getLocation(), objects));
+        objects.add(new Spike(this.getLocation(), objects));
 
 
-        for (Class<? extends GameObject> c : classes) {
+        for (GameObject c : objects) {
 
-            JButton jb = new JButton(c.getSimpleName());
-            jb.addActionListener(new ButtonListener(c));
-            buttons.add(jb);
+
+            c.addMouseListener(new ButtonListener(objects));
+            flowLayout.addLayoutComponent(c.getName(), c);
+            this.add(c);
         }
 
 
@@ -40,10 +39,6 @@ public class GOMenue extends JPanel {
 
         this.setLayout(flowLayout);
 
-        for (JButton availeableObject : buttons) {
-            flowLayout.addLayoutComponent(availeableObject.getName(), availeableObject);
-            this.add(availeableObject);
-        }
 
         this.setVisible(true);
     }

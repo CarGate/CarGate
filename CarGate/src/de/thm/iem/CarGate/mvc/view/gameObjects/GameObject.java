@@ -6,11 +6,11 @@
 package de.thm.iem.CarGate.mvc.view.gameObjects;
 
 import de.thm.iem.CarGate.interfaces.IEffectable;
+import de.thm.iem.CarGate.lib.Pathreplacer;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -39,10 +39,12 @@ public abstract class GameObject extends JPanel {
      */
     public GameObject(Point bounds, String path, String suffix, Vector<GameObject> gameObjects) {
         try {
-			//TODO Replace before export using images as resources
-            this.skin = ImageIO.read(new File("./de/thm/iem/CarGate/resourses/view/Gate_closed.png"));
-            //ImageIO.read(getClass().getResourceAsStream(
-            //new Pathreplacer(path).replace(suffix)));
+
+            //  ImageIO.read(new File("./de/thm/iem/CarGate/resourses/view/Gate_closed.png"));
+            //TODO fix imageloading
+
+            this.skin = ImageIO.read(getClass().getResourceAsStream(
+                    new Pathreplacer(path).replace(suffix)));
             this.getBounds().height = this.skin.getHeight(null);
 			this.getBounds().width = this.skin.getWidth(null);
             this.setLocation(new Point(bounds.x - (this.getBounds().height / 2), bounds.y - this.getBounds().height / 2));

@@ -51,8 +51,7 @@ public class Vector2Long implements IVector<Long> {
      */
     @Override
     public IVector<Long> subtract(IVector<Long> IVector) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Vector2Long(this.x - IVector.getX(), this.y - IVector.getY());
     }
 
     /* (non-Javadoc)
@@ -60,8 +59,7 @@ public class Vector2Long implements IVector<Long> {
      */
     @Override
     public Long dot(IVector<Long> IVector) {
-        // TODO Auto-generated method stub
-        return null;
+        return Long.valueOf(this.x + IVector.getX() + this.y + IVector.getY());
     }
 
     /* (non-Javadoc)
@@ -69,8 +67,7 @@ public class Vector2Long implements IVector<Long> {
      */
     @Override
     public IVector<Long> scalarMul(Long scalar) {
-        // TODO Auto-generated method stub
-        return null;
+        return new Vector2Long(this.x * scalar, this.y * scalar);
     }
 
     /* (non-Javadoc)
@@ -78,8 +75,7 @@ public class Vector2Long implements IVector<Long> {
      */
     @Override
     public Long length() {
-        // TODO Auto-generated method stub
-        return null;
+        return Long.valueOf((int) Math.sqrt(x * x + y * y));
     }
 
     /* (non-Javadoc)
@@ -87,8 +83,8 @@ public class Vector2Long implements IVector<Long> {
      */
     @Override
     public IVector<Long> normalize() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Vector2Long(this.x / this.length(), this.y / this.length());
+
     }
 
 

@@ -5,9 +5,8 @@
  */
 package de.thm.iem.CarGate.interfaces;
 
-import java.util.List;
-
 import javax.swing.table.TableModel;
+import java.util.List;
 
 /**
  * @author yannicklamprecht
@@ -47,6 +46,15 @@ public interface IHighscoreHandler {
 	 * @return
 	 */
 	public TableModel toStringTableModel(String playername);
-	
-	
+
+    /**
+     * Loads the highscore from file
+     */
+    public void save();
+
+    /**
+     * Save the highscore to file
+     */
+    public void load();
+
 }

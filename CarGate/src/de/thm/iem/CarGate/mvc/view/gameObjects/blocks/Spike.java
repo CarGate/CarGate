@@ -6,7 +6,6 @@
 package de.thm.iem.CarGate.mvc.view.gameObjects.blocks;
 
 import de.thm.iem.CarGate.interfaces.IEffectable;
-import de.thm.iem.CarGate.interfaces.IPlaceable;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
 import java.awt.*;
@@ -25,8 +24,8 @@ public class Spike extends GameObject{
 	 * @param location
 	 * @param gameObjects
 	 */
-	protected Spike(Point location, Vector<GameObject> gameObjects) {
-		super(location, Spike.class.getName(),null, gameObjects);
+    public Spike(Point location, Vector<GameObject> gameObjects) {
+        super(location, Spike.class.getName(),null, gameObjects);
 	}
 
 

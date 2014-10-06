@@ -5,16 +5,18 @@
  */
 package de.thm.iem.CarGate.mvc.model;
 
+import de.thm.iem.CarGate.interfaces.IHighscoreHandler;
+import de.thm.iem.CarGate.interfaces.IHighscorePlayer;
+
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.xml.bind.JAXB;
+import javax.xml.bind.annotation.XmlElement;
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 import java.util.stream.Collectors;
-
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-
-import de.thm.iem.CarGate.interfaces.IHighscoreHandler;
-import de.thm.iem.CarGate.interfaces.IHighscorePlayer;
 
 /**
  * @author yannicklamprecht
@@ -22,14 +24,17 @@ import de.thm.iem.CarGate.interfaces.IHighscorePlayer;
  */
 public class HighscoreHandler implements IHighscoreHandler {
 
-	private List<IHighscorePlayer> players;
+    private File saveFile = new File("saveFile.xml");
+
+    @XmlElement
+    private List<IHighscorePlayer> players;
 
 	/**
 	 * 
 	 */
 	public HighscoreHandler() {
-		this.players = new Vector<>();
-	}
+        this.load();
+    }
 
 	/*
 	 * (non-Javadoc)
@@ -129,4 +134,15 @@ public class HighscoreHandler implements IHighscoreHandler {
 
 		return model;
 	}
+
+    @Override
+    public void save() {
+        JAXB.marshal(players, saveFile);
+    }
+
+    @Override
+    public void load() {
+
+        players = (Vector<IHighscorePlayer>) JAXB.unmarshal(saveFile, Vector.class);
+    }
 }
