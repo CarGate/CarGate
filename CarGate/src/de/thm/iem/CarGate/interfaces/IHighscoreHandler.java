@@ -6,7 +6,7 @@
 package de.thm.iem.CarGate.interfaces;
 
 import javax.swing.table.TableModel;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * @author yannicklamprecht
@@ -19,9 +19,9 @@ public interface IHighscoreHandler {
 	 *  e.g. Listing all highscoreplayer
 	 * @return
 	 */
-	public List<IHighscorePlayer> getHighscorePlayers();
-	
-	/**
+    public ArrayList<IHighscorePlayer> getHighscorePlayers();
+
+    /**
 	 * Adds a new Highscoreplayer to database
 	 * @param player
 	 */
