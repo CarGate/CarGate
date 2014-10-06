@@ -17,7 +17,7 @@ import java.util.Vector;
  *
  */
 @SuppressWarnings("serial")
-public class Spike extends GameObject implements IPlaceable {
+public class Spike extends GameObject{
 
     private IEffectable spikeEffect;
 
@@ -29,12 +29,5 @@ public class Spike extends GameObject implements IPlaceable {
 		super(location, Spike.class.getName(),null, gameObjects);
 	}
 
-	/* (non-Javadoc)
-	 * @see de.thm.iem.CarGate.interfaces.IPlaceable#place(java.awt.Point)
-	 */
-	@Override
-	public void place(Point location) {
-			this.setLocation(location);
-	}
 
 }

@@ -17,7 +17,7 @@ import java.util.Vector;
  *
  */
 @SuppressWarnings("serial")
-public class IcePlane extends GameObject implements IPlaceable {
+public class IcePlane extends GameObject{
 
 	/**
 	 * @param location
@@ -28,11 +28,4 @@ public class IcePlane extends GameObject implements IPlaceable {
         this.setEffectable(new IceEffect(this));
     }
 
-	/* (non-Javadoc)
-	 * @see de.thm.iem.CarGate.interfaces.IPlaceable#place(java.awt.Point)
-	 */
-	@Override
-	public void place(Point location) {
-		this.setLocation(location);
-	}
 }
