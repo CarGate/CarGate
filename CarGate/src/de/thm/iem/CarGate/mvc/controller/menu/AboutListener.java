@@ -20,7 +20,7 @@ public class AboutListener implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Nothing here", "About us", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Ein Projekt von \n Christian Kretzschmar, Yannick Lamprecht \n Dustin Leibnitz, Thorsten Otto", "About us", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
