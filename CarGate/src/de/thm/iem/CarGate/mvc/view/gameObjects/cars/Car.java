@@ -29,6 +29,7 @@ public class Car extends GameObject implements ICar {
 	protected Car(Point location,Vector<GameObject> gameObjects, Direction defaultDirection) {
 		super(location, Car.class.getName(),null, gameObjects);
 		this.direction=defaultDirection;
+        this.speed = 1;
 	}
 
 	/*
@@ -74,9 +75,9 @@ public class Car extends GameObject implements ICar {
         this.repaint();
     }
 
+
 	@Override
     public void repaint() {
-        //TODO Implement location checking for moving
         //this.gameObjects.stream().filter( e -> e.getLocation().equals(new Vector2Integer(getLocation()).add(direction).to))
 
         this.setLocation(new Point(this.getLocation().x
@@ -87,6 +88,41 @@ public class Car extends GameObject implements ICar {
         super.repaint();
     }
 
-    //TODO CollisionDetection method
+    private Car getCar(){
+        return this;
+    }
+
+    private void changeDirection(){
+
+
+    }
+
+    /**
+     * Method to detect a collision, this method is startet at construction.
+     */
+
+    public void collsionDetection(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true) {
+                    for (GameObject gobj : gameObjects) {
+                        if (getBounds().intersects(gobj.getBounds())) {
+                            switch(gobj.getName()){
+                                case "Crate": changeDirection();break;
+                                case "Container": changeDirection();break;
+                                case "IcePlane": gobj.getIEffectable().playEffect(getCar());break;
+                                case "Spike": gobj.getIEffectable().playEffect(getCar()); ;break;
+                                case "Nitro": gobj.getIEffectable().playEffect(getCar());;break;
+                            }
+                        }
+
+                    }
+                }
+
+            }
+        }).start();
+
+    }
 
 }

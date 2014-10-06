@@ -43,8 +43,7 @@ public abstract class GameObject extends JPanel {
             //  ImageIO.read(new File("./de/thm/iem/CarGate/resourses/view/Gate_closed.png"));
             //TODO fix imageloading
 
-            this.skin = ImageIO.read(getClass().getResourceAsStream(
-                    new Pathreplacer(path).replace(suffix)));
+            this.skin = ImageIO.read(getClass().getResourceAsStream(new Pathreplacer(path).replace(suffix)));
             this.getBounds().height = this.skin.getHeight(null);
 			this.getBounds().width = this.skin.getWidth(null);
             this.setLocation(new Point(bounds.x - (this.getBounds().height / 2), bounds.y - this.getBounds().height / 2));
@@ -87,5 +86,9 @@ public abstract class GameObject extends JPanel {
         for (GameObject ob : gameObjects) {
             ob.repaint();
         }
+    }
+
+    public IEffectable getIEffectable(){
+        return effectable;
     }
 }
