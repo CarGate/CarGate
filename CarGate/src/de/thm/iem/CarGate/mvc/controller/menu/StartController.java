@@ -14,13 +14,18 @@ import java.awt.event.ActionListener;
  */
 public class StartController implements ActionListener{
 
+    private Thread gameThread;
+
+    public StartController(Thread gameThread){
+        this.gameThread = gameThread;
+    }
+
 	/* (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		gameThread.start();
 	}
 
 	

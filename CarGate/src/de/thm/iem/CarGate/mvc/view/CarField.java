@@ -31,7 +31,7 @@ public class CarField extends JPanel{
 
         this.gameThread = new Thread(this.runnable);
 		
-		this.gameThread.start();
+		//this.gameThread.start();
         //this.gameObjects.add(new Gate(new Point(this.getBounds().x - 20, this.getBounds().y / 2), gameObjects));
 
         this.setVisible(true);
