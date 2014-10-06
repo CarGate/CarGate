@@ -7,7 +7,7 @@ package de.thm.iem.CarGate.mvc.view.gameObjects;
 
 import de.thm.iem.CarGate.interfaces.ICloseable;
 import de.thm.iem.CarGate.lib.Pathreplacer;
-import de.thm.iem.CarGate.mvc.controller.gameobject.abbilities.Close;
+import de.thm.iem.CarGate.mvc.controller.gameobjectController.abbilities.Close;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

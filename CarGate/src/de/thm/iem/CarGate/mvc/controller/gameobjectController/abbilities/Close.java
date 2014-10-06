@@ -1,4 +1,4 @@
-package de.thm.iem.CarGate.mvc.controller.gameobject.abbilities;
+package de.thm.iem.CarGate.mvc.controller.gameobjectController.abbilities;
 
 import de.thm.iem.CarGate.interfaces.ICloseable;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;

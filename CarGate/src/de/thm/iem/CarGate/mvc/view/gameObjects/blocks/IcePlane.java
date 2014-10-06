@@ -5,8 +5,7 @@
  */
 package de.thm.iem.CarGate.mvc.view.gameObjects.blocks;
 
-import de.thm.iem.CarGate.interfaces.IPlaceable;
-import de.thm.iem.CarGate.mvc.controller.gameobject.effects.IceEffect;
+import de.thm.iem.CarGate.mvc.controller.gameobjectController.effects.IceEffect;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
 import java.awt.*;
