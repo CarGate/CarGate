@@ -5,6 +5,9 @@
  */
 package de.thm.iem.CarGate.mvc.controller;
 
+import de.thm.iem.CarGate.mvc.view.CarField;
+import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -14,6 +17,16 @@ import java.awt.event.MouseListener;
  */
 public class DragAndDropController implements MouseListener {
 
+
+    private GameObject data = null;
+    private boolean isInCarfield = false;
+
+
+    public DragAndDropController() {
+
+    }
+
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -21,21 +34,32 @@ public class DragAndDropController implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if (e.getSource() instanceof GameObject) {
+            data = (GameObject) e.getSource();
+            data.setVisible(false);
+        }
 
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        if (isInCarfield) {
+            data.setLocation(e.getLocationOnScreen().getLocation());
+        }
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        if (e.getSource() instanceof CarField) {
+            isInCarfield = true;
+        }
 
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-
+        if (e.getSource() instanceof CarField) {
+            isInCarfield = false;
+        }
     }
 }

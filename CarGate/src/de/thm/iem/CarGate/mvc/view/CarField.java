@@ -6,8 +6,10 @@
 package de.thm.iem.CarGate.mvc.view;
 
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
+import de.thm.iem.CarGate.mvc.view.gameObjects.Gate;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Vector;
 
 /**
@@ -16,8 +18,11 @@ import java.util.Vector;
  */
 @SuppressWarnings("serial")
 public class CarField extends JPanel{
-	
-	private Vector<GameObject> gameObjects;
+
+
+    public final static CarField field = new CarField();
+
+    private Vector<GameObject> gameObjects;
 
 
     private Thread gameThread;
@@ -25,14 +30,16 @@ public class CarField extends JPanel{
 	
 	
 	public CarField(){
+        this.setBounds(0, 0, 200, 200);
         this.gameObjects = new Vector<GameObject>();
-        this.runnable = new GameThread(gameObjects, 20);
+        this.runnable = new GameThread(this, 20);
 
 
         this.gameThread = new Thread(this.runnable);
 		
-		this.gameThread.start();
         //this.gameObjects.add(new Gate(new Point(this.getBounds().x - 20, this.getBounds().y / 2), gameObjects));
+        this.add(new Gate(new Point(this.getBounds().x - 20, this.getBounds().y / 2), gameObjects));
+        
 
         this.setVisible(true);
     }

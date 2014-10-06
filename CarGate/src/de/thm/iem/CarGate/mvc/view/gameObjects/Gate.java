@@ -36,5 +36,6 @@ public class Gate extends GameObject {
 
         } catch (IOException e) {
         }
+
     }
 }

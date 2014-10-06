@@ -5,9 +5,6 @@
  */
 package de.thm.iem.CarGate.mvc.view;
 
-import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
-
-import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -17,11 +14,11 @@ import java.util.concurrent.TimeUnit;
 public class GameThread implements Runnable{
 	
 	private int ticks;
-	private Vector<GameObject> objects;
-	private boolean running = true;
+    private CarField field;
+    private boolean running = true;
 
-    public GameThread(Vector<GameObject> objects, int ticks) {
-        this.objects = objects;
+    public GameThread(CarField field, int ticks) {
+        this.field = field;
         this.ticks = ticks;
     }
 
@@ -32,7 +29,7 @@ public class GameThread implements Runnable{
 	public void run() {
 
 		do{
-            GameObject.repaint(objects);
+            field.repaint();
             try {
                 Thread.sleep(TimeUnit.SECONDS.toMillis(1/ticks));
 			} catch (InterruptedException e) {
