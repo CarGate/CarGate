@@ -54,7 +54,11 @@
 		<copy todir="${build.dir}">
 			<fileset dir="${project.dir}" includes="*.ini" />
 		</copy>
-	</target>
+        <copy todir="${build.dir}/${split.path}/resources">
+            <fileset dir="${resource.dir}"/>
+        </copy>
+
+    </target>
 
 	<!-- Kompilieren -->
 	<target name="compile" depends="copyini">
