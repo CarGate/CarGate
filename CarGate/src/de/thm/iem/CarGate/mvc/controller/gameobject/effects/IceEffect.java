@@ -8,7 +8,7 @@ import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 /**
  * Created by yannicklamprecht on 04.10.14.
  */
-public class IceEffect implements IEffectable {
+public class IceEffect implements IEffectable{
 
     private GameObject gameObject;
 
