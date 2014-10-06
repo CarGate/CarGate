@@ -13,6 +13,8 @@ import javax.swing.table.TableModel;
 import javax.xml.bind.JAXB;
 import javax.xml.bind.annotation.XmlElement;
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
@@ -27,7 +29,7 @@ public class HighscoreHandler implements IHighscoreHandler {
     private File saveFile = new File("saveFile.xml");
 
     @XmlElement
-    private List<IHighscorePlayer> players;
+    private ArrayList<IHighscorePlayer> players;
 
 	/**
 	 * 
@@ -43,9 +45,9 @@ public class HighscoreHandler implements IHighscoreHandler {
 	 * de.thm.iem.CarGate.interfaces.IHighscoreHandler#getHighscorePlayers()
 	 */
 	@Override
-	public List<IHighscorePlayer> getHighscorePlayers() {
-		return new Vector<>(players);
-	}
+    public ArrayList<IHighscorePlayer> getHighscorePlayers() {
+        return new ArrayList<>(players);
+    }
 
 	/*
 	 * (non-Javadoc)
@@ -57,7 +59,8 @@ public class HighscoreHandler implements IHighscoreHandler {
 	@Override
 	public void addHighscorePlayer(IHighscorePlayer player) {
 		this.players.add(player);
-	}
+        this.save();
+    }
 
 	/*
 	 * (non-Javadoc)
@@ -118,9 +121,7 @@ public class HighscoreHandler implements IHighscoreHandler {
 		List<IHighscorePlayer> copyedList = this.players.stream()
 				.filter(e -> e.getName().equalsIgnoreCase(playername))
 				.collect(Collectors.toList());
-		
-		
-		
+
 
 		@SuppressWarnings("serial")
 		DefaultTableModel model = new DefaultTableModel(
@@ -143,6 +144,16 @@ public class HighscoreHandler implements IHighscoreHandler {
     @Override
     public void load() {
 
-        players = (Vector<IHighscorePlayer>) JAXB.unmarshal(saveFile, Vector.class);
+        if (!saveFile.exists()) {
+            try {
+                saveFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            players = new ArrayList<>();
+            this.addHighscorePlayer(new HighscorePlayer("dummy", 0));
+        } else {
+            players = (ArrayList<IHighscorePlayer>) JAXB.unmarshal(saveFile, ArrayList.class);
+        }
     }
 }
