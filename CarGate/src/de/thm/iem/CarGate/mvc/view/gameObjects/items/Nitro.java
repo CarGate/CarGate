@@ -12,6 +12,7 @@ import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Vector;
 
 /**
@@ -28,7 +29,7 @@ public class Nitro extends GameObject implements ICollectable {
 	 * @param location
 	 * @param gameObjects
 	 */
-	public Nitro(Point location,Vector<GameObject> gameObjects) {
+    public Nitro(Point location, Vector<GameObject> gameObjects) throws IOException {
         super(location, ImageIO.read(Nitro.class.getResource("../resources/gameObjects/items/Nitro.png")), gameObjects);
     }
 

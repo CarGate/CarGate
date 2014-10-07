@@ -10,6 +10,7 @@ import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Vector;
 
 /**
@@ -25,7 +26,7 @@ public class Spike extends GameObject{
 	 * @param location
 	 * @param gameObjects
 	 */
-    public Spike(Point location, Vector<GameObject> gameObjects) {
+    public Spike(Point location, Vector<GameObject> gameObjects) throws IOException {
         super(location, ImageIO.read(Spike.class.getResource("../resources/gameObjects/blocks/Spike.png")), gameObjects);
     }
 

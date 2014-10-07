@@ -1,8 +1,3 @@
-/**
- * CarGate von Yannick Lamprecht 980340
- * Erstellt am 12.09.2014 15:10:27
- * Restricted under Creative Commons CC by-nc-sa
- */
 package de.thm.iem.CarGate.mvc.view.gameObjects;
 
 import de.thm.iem.CarGate.interfaces.ICloseable;
@@ -13,28 +8,18 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.Vector;
 
+
 /**
- * @author yannicklamprecht
- *
+ * Created by yannicklamprecht on 07.10.14.
  */
-@SuppressWarnings("serial")
 public class Gate extends GameObject {
 
     private ICloseable closeable;
 
-	/**
-	 * @param location
-	 * @param gameObjects
-	 */
-	public Gate(Point location, Vector<GameObject> gameObjects) {
-        super(location, ImageIO.read(Gate.class.getResource("../resources/gameObjects/Gate_closed.png")), gameObjects);
-        try {
-            this.closeable = new Close(ImageIO.read(Gate.class.getResource("../resources/gameObjects/Gate_closed.png"), ImageIO.read(Gate.class.getResource("../resources/gameObjects/Gate_opened.png")));
-            //new Close(ImageIO.read(new File("de/thm/iem/CarGate/resourses/view/Gate_closed.png")), ImageIO.read(new File("de/thm/iem/CarGate/resourses/view/Gate_opened.png")));
+    public Gate(Point location, Vector<GameObject> gameObjects) throws IOException {
+        super(location, ImageIO.read(Gate.class.getResourceAsStream("../resources/gameObjects/Gate_closed.png")), gameObjects);
 
-
-        } catch (IOException e) {
-        }
-
+        this.closeable = new Close(ImageIO.read(Gate.class.getResourceAsStream("../resources/gameObjects/Gate_closed.png")), ImageIO.read(Gate.class.getResourceAsStream("../resources/gameObjects/Gate_opened.png")));
+        this.closeable.setGameObject(this);
     }
 }

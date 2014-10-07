@@ -3,7 +3,7 @@ package de.thm.iem.CarGate.mvc.controller.gameobjectController.abbilities;
 import de.thm.iem.CarGate.interfaces.ICloseable;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
-import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by yannicklamprecht on 04.10.14.
@@ -11,12 +11,12 @@ import java.awt.*;
 public class Close implements ICloseable {
 
     private GameObject gameObject;
-    private Image closedImage;
-    private Image openedImage;
+    private BufferedImage closedImage;
+    private BufferedImage openedImage;
 
     private boolean isClosed = true;
 
-    public Close(Image closedImage, Image openedImage) {
+    public Close(BufferedImage closedImage, BufferedImage openedImage) {
         this.closedImage = closedImage;
         this.openedImage = openedImage;
     }

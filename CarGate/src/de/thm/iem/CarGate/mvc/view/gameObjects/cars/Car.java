@@ -11,6 +11,8 @@ import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Vector;
 
 /**
@@ -27,7 +29,7 @@ public class Car extends GameObject implements ICar {
 	 * @param location
 	 * @param gameObjects
 	 */
-	protected Car(Point location,Vector<GameObject> gameObjects, Direction defaultDirection) {
+    protected Car(Point location, Vector<GameObject> gameObjects, Direction defaultDirection) throws IOException {
         super(location, ImageIO.read(Car.class.getResource("../resources/gameObjects/cars/Car.png")), gameObjects);
         this.direction = defaultDirection;
         this.speed = 1;
@@ -71,8 +73,8 @@ public class Car extends GameObject implements ICar {
 	 * @see de.thm.iem.CarGate.interfaces.ICar#setSkin(java.awt.Image)
 	 */
 	@Override
-	public void setSkin(Image skin) {
-		this.skin = skin;
+    public void setSkin(BufferedImage skin) {
+        this.skin = skin;
         this.repaint();
     }
 

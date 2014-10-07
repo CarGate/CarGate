@@ -10,12 +10,10 @@ import de.thm.iem.CarGate.interfaces.IEffectable;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.Vector;
 
 /**
  * @author yannicklamprecht
- *
  */
 @SuppressWarnings("serial")
 public abstract class GameObject extends JPanel {
@@ -37,16 +35,14 @@ public abstract class GameObject extends JPanel {
      * @param gameObjects the IVector of gameObjects
      */
     public GameObject(Point bounds, BufferedImage skin, Vector<GameObject> gameObjects) {
-        try {
-            this.skin = skin;
-            this.getBounds().height = this.skin.getHeight(null);
-			this.getBounds().width = this.skin.getWidth(null);
-            this.setLocation(new Point(bounds.x - (this.getBounds().height / 2), bounds.y - this.getBounds().height / 2));
-        } catch (IOException e) {
-		}
-		this.gameObjects = gameObjects;
-		this.gameObjects.add(this);
-		this.setVisible(true);
+
+        this.skin = skin;
+        this.getBounds().height = this.skin.getHeight(null);
+        this.getBounds().width = this.skin.getWidth(null);
+        this.setLocation(new Point(bounds.x - (this.getBounds().height / 2), bounds.y - this.getBounds().height / 2));
+        this.gameObjects = gameObjects;
+        this.gameObjects.add(this);
+        this.setVisible(true);
     }
 
     public GameObject(Point bounds, BufferedImage skin, Vector<GameObject> gameObjects, IEffectable effectable) {
@@ -61,16 +57,16 @@ public abstract class GameObject extends JPanel {
         }
     }
 
-    public void setSkin(Image skin) {
+    public void setSkin(BufferedImage skin) {
         this.skin = skin;
     }
 
-	@Override
-	public void paintComponents(Graphics g) {
-		super.paintComponents(g);
+    @Override
+    public void paintComponents(Graphics g) {
+        super.paintComponents(g);
 
-        int x = (getWidth() - image.getWidth()) / 2;
-        int y = (getHeight() - image.getHeight()) / 2;
+        int x = (getWidth() - skin.getWidth()) / 2;
+        int y = (getHeight() - skin.getHeight()) / 2;
         g.drawImage(skin, x, y, this);
 
     }
@@ -86,7 +82,7 @@ public abstract class GameObject extends JPanel {
         }
     }
 
-    public IEffectable getIEffectable(){
+    public IEffectable getIEffectable() {
         return effectable;
     }
 }

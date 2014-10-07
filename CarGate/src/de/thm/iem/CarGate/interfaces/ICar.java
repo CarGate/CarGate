@@ -5,9 +5,10 @@
  */
 package de.thm.iem.CarGate.interfaces;
 
-import java.awt.Image;
 
 import de.thm.iem.CarGate.enums.Direction;
+
+import java.awt.image.BufferedImage;
 
 /**
  * @author yannicklamprecht
@@ -21,23 +22,22 @@ public interface ICar {
 	 */
 	public void setDirection(Direction direction);
 	
-	
 	/**
-	 * Sets the speed the car is driving
-	 * @param speed
-	 */
-	public void setSpeed(int speed);
-	
-	/**
-	 * Returns the velocity / speed of the car
-	 * @return speed as int
-	 */
-	public int getSpeed();
+     * Returns the velocity / speed of the car
+     * @return speed as int
+     */
+    public int getSpeed();
+
+    /**
+     * Sets the speed the car is driving
+     * @param speed
+     */
+    public void setSpeed(int speed);
 
 	/**
 	 * Sets the carskins
-	 * @param skin
-	 */
-	public void setSkin(Image skin);
-	
+     * @param skin BufferedImage
+     */
+    public void setSkin(BufferedImage skin);
+
 }

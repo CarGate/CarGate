@@ -4,6 +4,7 @@ import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Vector;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Vector;
  */
 public class Crate extends GameObject{
 
-    public Crate(Point location, Vector<GameObject> gameObjects){
+    public Crate(Point location, Vector<GameObject> gameObjects) throws IOException {
         super(location, ImageIO.read(Crate.class.getResource("../resources/gameObjects/blocks/Crate.png")), gameObjects);
 
     }

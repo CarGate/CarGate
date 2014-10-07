@@ -10,6 +10,7 @@ import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Vector;
 
 /**
@@ -23,7 +24,7 @@ public class IcePlane extends GameObject{
 	 * @param location
 	 * @param gameObjects
 	 */
-    public IcePlane(Point location, Vector<GameObject> gameObjects) {
+    public IcePlane(Point location, Vector<GameObject> gameObjects) throws IOException {
         super(location, ImageIO.read(IcePlane.class.getResource("../resources/gameObjects/blocks/IcePlane.png")), gameObjects);
         this.setEffectable(new IceEffect(this));
     }
