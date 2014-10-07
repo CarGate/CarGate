@@ -7,7 +7,6 @@ package de.thm.iem.CarGate.mvc.model;
 
 import de.thm.iem.CarGate.interfaces.IHighscorePlayer;
 
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -18,9 +17,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class HighscorePlayer implements IHighscorePlayer {
 
-    @XmlElement(required = true)
+
     private String name;
-    @XmlAttribute
     private long points;
 
 	/**
@@ -30,12 +28,17 @@ public class HighscorePlayer implements IHighscorePlayer {
 		this.name=name;
 		this.points=points;
 	}
-	
-	/* (non-Javadoc)
-	 * @see de.thm.iem.CarGate.interfaces.IHighscorePlayer#getName()
-	 */
+
+    public HighscorePlayer() {
+
+    }
+
+    /* (non-Javadoc)
+     * @see de.thm.iem.CarGate.interfaces.IHighscorePlayer#getName()
+     */
 	@Override
-	public String getName() {
+    @XmlElement
+    public String getName() {
 		return name;
 	}
 
@@ -47,7 +50,8 @@ public class HighscorePlayer implements IHighscorePlayer {
      * @see de.thm.iem.CarGate.interfaces.IHighscorePlayer#getPoints()
      */
 	@Override
-	public long getPoints() {
+    @XmlElement
+    public long getPoints() {
 		return points;
 	}
 

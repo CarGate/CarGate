@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dataHolder>
+    <players>
+        <name>Test</name>
+        <points>0</points>
+    </players>
+    <players>
+        <name>Test2</name>
+        <points>0</points>
+    </players>
+    <players>
+        <name>Test23</name>
+        <points>0</points>
+    </players>
+    <players>
+        <name>Test234</name>
+        <points>0</points>
+    </players>
+</dataHolder>
