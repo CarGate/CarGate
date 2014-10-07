@@ -114,6 +114,7 @@ public class Car extends GameObject implements ICar {
                                 case "IcePlane": gobj.getIEffectable().playEffect(getCar());break;
                                 case "Spike": gobj.getIEffectable().playEffect(getCar()); ;break;
                                 case "Nitro": gobj.getIEffectable().playEffect(getCar());;break;
+                                case "Gate": ;break;
                             }
                         }
 
