@@ -8,6 +8,7 @@ package de.thm.iem.CarGate.mvc.view.gameObjects.blocks;
 import de.thm.iem.CarGate.interfaces.IEffectable;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.util.Vector;
 
@@ -25,8 +26,8 @@ public class Spike extends GameObject{
 	 * @param gameObjects
 	 */
     public Spike(Point location, Vector<GameObject> gameObjects) {
-        super(location, Spike.class.getName(),null, gameObjects);
-	}
+        super(location, ImageIO.read(Spike.class.getResource("../resources/gameObjects/blocks/Spike.png")), gameObjects);
+    }
 
 
 }

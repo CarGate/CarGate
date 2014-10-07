@@ -6,7 +6,6 @@
 package de.thm.iem.CarGate.mvc.view.gameObjects;
 
 import de.thm.iem.CarGate.interfaces.ICloseable;
-import de.thm.iem.CarGate.lib.Pathreplacer;
 import de.thm.iem.CarGate.mvc.controller.gameobjectController.abbilities.Close;
 
 import javax.imageio.ImageIO;
@@ -28,9 +27,9 @@ public class Gate extends GameObject {
 	 * @param gameObjects
 	 */
 	public Gate(Point location, Vector<GameObject> gameObjects) {
-		super(location, Gate.class.getName(), "_closed", gameObjects);
+        super(location, ImageIO.read(getClass().getResource("../resources/gameObjects/Gate_closed.png")), gameObjects);
         try {
-            this.closeable = new Close(ImageIO.read(Gate.class.getResourceAsStream(new Pathreplacer(Gate.class.getName()).replace("_closed"))), ImageIO.read(Gate.class.getResourceAsStream(new Pathreplacer(Gate.class.getName()).replace("_opened"))));
+            this.closeable = new Close(ImageIO.read(getClass().getResource("../resources/gameObjects/Gate_closed.png"), ImageIO.read(getClass().getResource("../resources/gameObjects/Gate_opened.png")));
             //new Close(ImageIO.read(new File("de/thm/iem/CarGate/resourses/view/Gate_closed.png")), ImageIO.read(new File("de/thm/iem/CarGate/resourses/view/Gate_opened.png")));
 
 

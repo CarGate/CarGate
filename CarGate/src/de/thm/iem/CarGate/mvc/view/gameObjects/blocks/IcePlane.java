@@ -8,6 +8,7 @@ package de.thm.iem.CarGate.mvc.view.gameObjects.blocks;
 import de.thm.iem.CarGate.mvc.controller.gameobjectController.effects.IceEffect;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.util.Vector;
 
@@ -23,7 +24,7 @@ public class IcePlane extends GameObject{
 	 * @param gameObjects
 	 */
     public IcePlane(Point location, Vector<GameObject> gameObjects) {
-        super(location, IcePlane.class.getName(),null, gameObjects);
+        super(location, ImageIO.read(IcePlane.class.getResource("../resources/gameObjects/blocks/IcePlane.png")), gameObjects);
         this.setEffectable(new IceEffect(this));
     }
 

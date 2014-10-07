@@ -10,6 +10,7 @@ import de.thm.iem.CarGate.interfaces.ICollectable;
 import de.thm.iem.CarGate.interfaces.IEffectable;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.util.Vector;
 
@@ -28,8 +29,8 @@ public class Nitro extends GameObject implements ICollectable {
 	 * @param gameObjects
 	 */
 	public Nitro(Point location,Vector<GameObject> gameObjects) {
-		super(location, Nitro.class.getName(),null, gameObjects);
-	}
+        super(location, ImageIO.read(Nitro.class.getResource("../resources/gameObjects/items/Nitro.png")), gameObjects);
+    }
 
 
     public void addEffect(IEffectable effect) {

@@ -6,6 +6,7 @@
 	<property name="project.dir" value="." />
 	<property name="source.dir" value="src" />
 	<property name="build.dir" value="build" />
+    <property name="eclipse.build" value="bin"/>
 	<property name="split.path" value="de/thm/iem/CarGate"/>
 	<property name="jar.dir" value="${project.dir}/jar-build" />
 	<property name="doku.dir" value="doc" />
@@ -15,7 +16,7 @@
 	<property name="ini.file" value="editor.ini" />
     <property name="company.name" value="CarGate"/>
     <property name="authors"
-              value="Yannick Lamprecht(98 03 40), Dustin Leibnitz(97 97 59),${line.separator}Christian Kretschmar(97 90 05), Thorsten Otto(** ** **)"/>
+              value="Yannick Lamprecht(98 03 40), Dustin Leibnitz(97 97 59),${line.separator}Christian Kretschmar(97 90 05), Thorsten Otto(97 39 20)"/>
 
 
 
@@ -24,6 +25,7 @@
 	<target name="clean">
 		<delete dir="${build.dir}" />
 		<delete dir="${doku.dir}" />
+        <delete dir="${eclipse.build}"/>
 
 		<delete>
 			<fileset dir="${project.dir}" includes="**/*.class" />
@@ -75,6 +77,7 @@
 				<attribute name="Compiled-Version" value="${build.number}" />
                 <attribute name="Date" value="${TODAY}"/>
                 <attribute name="License" value="Creative Commons: BY-NC-ND"/>
+                <attribute name="Authoren" value="${authors}"/>
 			</manifest>
 		</jar>
 

@@ -9,6 +9,7 @@ import de.thm.iem.CarGate.enums.Direction;
 import de.thm.iem.CarGate.interfaces.ICar;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.util.Vector;
 
@@ -27,8 +28,8 @@ public class Car extends GameObject implements ICar {
 	 * @param gameObjects
 	 */
 	protected Car(Point location,Vector<GameObject> gameObjects, Direction defaultDirection) {
-		super(location, Car.class.getName(),null, gameObjects);
-		this.direction=defaultDirection;
+        super(location, ImageIO.read(Car.class.getResource("../resources/gameObjects/cars/Car.png")), gameObjects);
+        this.direction = defaultDirection;
         this.speed = 1;
 	}
 
@@ -112,9 +113,14 @@ public class Car extends GameObject implements ICar {
                                 case "Crate": changeDirection();break;
                                 case "Container": changeDirection();break;
                                 case "IcePlane": gobj.getIEffectable().playEffect(getCar());break;
-                                case "Spike": gobj.getIEffectable().playEffect(getCar()); ;break;
-                                case "Nitro": gobj.getIEffectable().playEffect(getCar());;break;
-                                case "Gate": ;break;
+                                case "Spike":
+                                    gobj.getIEffectable().playEffect(getCar());
+                                    break;
+                                case "Nitro":
+                                    gobj.getIEffectable().playEffect(getCar());
+                                    break;
+                                case "Gate":
+                                    break;
                             }
                         }
 

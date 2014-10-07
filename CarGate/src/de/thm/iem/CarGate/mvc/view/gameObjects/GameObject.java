@@ -6,11 +6,10 @@
 package de.thm.iem.CarGate.mvc.view.gameObjects;
 
 import de.thm.iem.CarGate.interfaces.IEffectable;
-import de.thm.iem.CarGate.lib.Pathreplacer;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -21,8 +20,8 @@ import java.util.Vector;
 @SuppressWarnings("serial")
 public abstract class GameObject extends JPanel {
 
-	protected Image skin;
-	protected Vector<GameObject> gameObjects;
+    protected BufferedImage skin;
+    protected Vector<GameObject> gameObjects;
 
     protected IEffectable effectable;
 
@@ -33,17 +32,13 @@ public abstract class GameObject extends JPanel {
      * performance
      *
      * @param bounds      the location and expansion of the drawn object
-     * @param path        the path of the Image that will be drawn
+     * @param skin        the BufferedImage
      * @param suffix      a optional suffix e.g. _closed  for doors
      * @param gameObjects the IVector of gameObjects
      */
-    public GameObject(Point bounds, String path, String suffix, Vector<GameObject> gameObjects) {
+    public GameObject(Point bounds, BufferedImage skin, Vector<GameObject> gameObjects) {
         try {
-
-            //  ImageIO.read(new File("./de/thm/iem/CarGate/resourses/view/Gate_closed.png"));
-            //TODO fix imageloading
-
-            this.skin = ImageIO.read(getClass().getResourceAsStream(new Pathreplacer(path).replace(suffix)));
+            this.skin = skin;
             this.getBounds().height = this.skin.getHeight(null);
 			this.getBounds().width = this.skin.getWidth(null);
             this.setLocation(new Point(bounds.x - (this.getBounds().height / 2), bounds.y - this.getBounds().height / 2));
@@ -54,8 +49,8 @@ public abstract class GameObject extends JPanel {
 		this.setVisible(true);
     }
 
-    public GameObject(Point bounds, String path, String suffix, Vector<GameObject> gameObjects, IEffectable effectable) {
-        this(bounds, path, suffix, gameObjects);
+    public GameObject(Point bounds, BufferedImage skin, Vector<GameObject> gameObjects, IEffectable effectable) {
+        this(bounds, skin, gameObjects);
         this.setEffectable(effectable);
     }
 
@@ -73,8 +68,11 @@ public abstract class GameObject extends JPanel {
 	@Override
 	public void paintComponents(Graphics g) {
 		super.paintComponents(g);
-		g.drawImage(skin, this.getX(), this.getY(), this.getBounds().width,
-                this.getBounds().height, null);
+
+        int x = (getWidth() - image.getWidth()) / 2;
+        int y = (getHeight() - image.getHeight()) / 2;
+        g.drawImage(skin, x, y, this);
+
     }
 
     public void setEffectable(IEffectable effectable) {

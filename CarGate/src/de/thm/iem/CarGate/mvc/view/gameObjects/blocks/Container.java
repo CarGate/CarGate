@@ -2,6 +2,7 @@ package de.thm.iem.CarGate.mvc.view.gameObjects.blocks;
 
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.util.Vector;
 
@@ -11,9 +12,7 @@ import java.util.Vector;
 public class Container extends GameObject {
 
     public Container (Point location, Vector<GameObject> gameObjects){
-        super(location, Container.class.getName(),null, gameObjects);
-
-
+        super(location, ImageIO.read(Container.class.getResource("../resources/gameObjects/blocks/Container.png")), gameObjects);
     }
 
 
