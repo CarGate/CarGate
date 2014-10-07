@@ -39,6 +39,7 @@ public abstract class GameObject extends JPanel {
         this.gameObjects = gameObjects;
         this.gameObjects.add(this);
         this.setVisible(true);
+
     }
 
     public GameObject(Point bounds, Vector<GameObject> gameObjects, IEffectable effectable) {
@@ -64,10 +65,7 @@ public abstract class GameObject extends JPanel {
     @Override
     public void paintComponents(Graphics g) {
         super.paintComponents(g);
-
-        int x = (getWidth() - skin.getWidth()) / 2;
-        int y = (getHeight() - skin.getHeight()) / 2;
-        g.drawImage(skin, x, y, this);
+        g.drawImage(skin, 0, 0, null);
 
     }
 

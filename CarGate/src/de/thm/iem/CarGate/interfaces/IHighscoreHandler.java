@@ -57,4 +57,17 @@ public interface IHighscoreHandler {
      */
     public void load();
 
+
+    /**
+     * @return an array of names and points
+     */
+    public String[] getUsers();
+
+
+    /**
+     * @param name searched name
+     * @return a array of name an points
+     */
+    public String[] getUsers(String name);
+
 }

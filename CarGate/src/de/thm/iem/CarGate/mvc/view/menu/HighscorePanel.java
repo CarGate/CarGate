@@ -5,16 +5,12 @@
  */
 package de.thm.iem.CarGate.mvc.view.menu;
 
-import java.awt.BorderLayout;
-import java.awt.Toolkit;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JTable;
-
 import de.thm.iem.CarGate.interfaces.IHighscoreHandler;
 import de.thm.iem.CarGate.mvc.controller.menu.highscorepanel.BackListener;
 import de.thm.iem.CarGate.mvc.model.HighScorePanelModel;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author yannicklamprecht
@@ -28,8 +24,8 @@ public class HighscorePanel extends JDialog {
 
 	private SearchField search;
 
-	private JTable highscoreTable;
-	private IHighscoreHandler handler;
+    private JList list;
+    private IHighscoreHandler handler;
 
 	private JButton back;
 
@@ -51,23 +47,25 @@ public class HighscorePanel extends JDialog {
 
 		this.setModal(true);
 
-		highscoreTable = new JTable(this.handler.toStringTableModel());
 
-		this.search = new SearchField(handler, model, highscoreTable);
-		this.back = new JButton(model.getBackButton());
+        this.list = new JList(handler.getUsers());
+
+
+        this.search = new SearchField(handler, model, list);
+        this.back = new JButton(model.getBackButton());
 
 		this.back.addActionListener(new BackListener(this));
 
 
 		this.bl.addLayoutComponent(back, BorderLayout.SOUTH);
-		this.bl.addLayoutComponent(highscoreTable, BorderLayout.CENTER);
-		this.bl.addLayoutComponent(search, BorderLayout.NORTH);
+        this.bl.addLayoutComponent(list, BorderLayout.CENTER);
+        this.bl.addLayoutComponent(search, BorderLayout.NORTH);
 
 		this.setLayout(bl);
 
 		this.add(search);
 		this.add(back);
-		this.add(highscoreTable);
+        this.add(list);
 
 		this.setVisible(true);
 	}

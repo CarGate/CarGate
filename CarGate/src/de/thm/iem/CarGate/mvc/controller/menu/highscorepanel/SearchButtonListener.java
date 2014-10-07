@@ -5,13 +5,11 @@
  */
 package de.thm.iem.CarGate.mvc.controller.menu.highscorepanel;
 
+import de.thm.iem.CarGate.interfaces.IHighscoreHandler;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JTable;
-import javax.swing.JTextField;
-
-import de.thm.iem.CarGate.interfaces.IHighscoreHandler;
 
 /**
  * @author yannicklamprecht
@@ -21,11 +19,11 @@ public class SearchButtonListener implements ActionListener {
 
 	private IHighscoreHandler handler;
 	private JTextField searchText;
-	private JTable table;
+    private JList table;
 
 	public SearchButtonListener(IHighscoreHandler handler,
-			JTextField searchText, JTable table) {
-		this.handler = handler;
+                                JTextField searchText, JList table) {
+        this.handler = handler;
 		this.searchText = searchText;
 		this.table = table;
 	}
@@ -40,10 +38,13 @@ public class SearchButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (searchText.getText() != null && searchText.getText() != "") {
-			table.setModel(handler.toStringTableModel(searchText.getText()));
-			table.repaint();
-		}
+        if (searchText.getText() != null && !searchText.getText().equalsIgnoreCase("")) {
+            table.setListData(handler.getUsers(searchText.getText()));
+            table.repaint();
+        } else {
+            table.setListData(handler.getUsers());
+            table.repaint();
+        }
 
 	}
 

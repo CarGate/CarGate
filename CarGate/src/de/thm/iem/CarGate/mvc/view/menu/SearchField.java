@@ -5,17 +5,13 @@
  */
 package de.thm.iem.CarGate.mvc.view.menu;
 
-import java.awt.FlowLayout;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-
 import de.thm.iem.CarGate.interfaces.IHighscoreHandler;
 import de.thm.iem.CarGate.mvc.controller.menu.highscorepanel.AddListener;
 import de.thm.iem.CarGate.mvc.controller.menu.highscorepanel.SearchButtonListener;
 import de.thm.iem.CarGate.mvc.model.HighScorePanelModel;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author yannicklamprecht
@@ -28,11 +24,11 @@ public class SearchField extends JPanel{
 	private JButton searchButton;
 	private JButton addButton;
 	private FlowLayout searchLayOut;
-	
-	
-	public SearchField(IHighscoreHandler handler, HighScorePanelModel model, JTable highscoreTable){
-		
-		this.searchLayOut = new FlowLayout(FlowLayout.LEFT);
+
+
+    public SearchField(IHighscoreHandler handler, HighScorePanelModel model, JList highscoreTable) {
+
+        this.searchLayOut = new FlowLayout(FlowLayout.LEFT);
 		
 		this.searchButton = new JButton(model.getSearch());
 		this.addButton = new JButton("add");
@@ -45,9 +41,9 @@ public class SearchField extends JPanel{
 		this.searchLayOut.addLayoutComponent("Text", this.searchfield);
 		this.searchLayOut.addLayoutComponent("searchButton", this.searchButton);
 		this.searchLayOut.addLayoutComponent("addButton", this.addButton);
-		
-		this.searchButton.addActionListener(new SearchButtonListener(handler, this.searchfield, highscoreTable));
-		this.addButton.addActionListener(new AddListener(handler, this.searchfield, highscoreTable));
+
+        this.searchButton.addActionListener(new SearchButtonListener(handler, this.searchfield, highscoreTable));
+        this.addButton.addActionListener(new AddListener(handler, this.searchfield, highscoreTable));
 		
 		this.setLayout(this.searchLayOut);
 		
