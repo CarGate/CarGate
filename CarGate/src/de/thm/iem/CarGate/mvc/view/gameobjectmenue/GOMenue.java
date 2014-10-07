@@ -2,12 +2,9 @@ package de.thm.iem.CarGate.mvc.view.gameobjectmenue;
 
 import de.thm.iem.CarGate.mvc.controller.menu.gameobjectmenue.ButtonListener;
 import de.thm.iem.CarGate.mvc.view.gameObjects.GameObject;
-import de.thm.iem.CarGate.mvc.view.gameObjects.blocks.IcePlane;
-import de.thm.iem.CarGate.mvc.view.gameObjects.blocks.Spike;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.Vector;
 
 /**
@@ -23,13 +20,13 @@ public class GOMenue extends JPanel {
         objects = new Vector<>();
 
 
-        try {
-            objects.add(new IcePlane(this.getLocation(), objects));
-            objects.add(new Spike(this.getLocation(), objects));
+        //try {
+        //  objects.add(new IcePlane(this.getLocation(), objects));
+        //objects.add(new Spike(this.getLocation(), objects));
 
-        } catch (IOException e) {
+        // } catch (IOException e) {
 
-        }
+        //}
 
 
         for (GameObject c : objects) {
