@@ -25,7 +25,8 @@ public class IcePlane extends GameObject{
 	 * @param gameObjects
 	 */
     public IcePlane(Point location, Vector<GameObject> gameObjects) throws IOException {
-        super(location, ImageIO.read(IcePlane.class.getResource("../resources/gameObjects/blocks/IcePlane.png")), gameObjects);
+        super(location, gameObjects);
+        this.setImage(ImageIO.read(getClass().getClassLoader().getResource("de/thm/iem/CarGate/resources/view/gameObjects/blocks/IcePlane.png")));
         this.setEffectable(new IceEffect(this));
     }
 

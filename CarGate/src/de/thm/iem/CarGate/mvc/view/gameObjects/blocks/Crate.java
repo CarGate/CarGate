@@ -13,10 +13,7 @@ import java.util.Vector;
 public class Crate extends GameObject{
 
     public Crate(Point location, Vector<GameObject> gameObjects) throws IOException {
-        super(location, ImageIO.read(Crate.class.getResource("../resources/gameObjects/blocks/Crate.png")), gameObjects);
-
+        super(location, gameObjects);
+        this.setImage(ImageIO.read(getClass().getClassLoader().getResource("de/thm/iem/CarGate/resources/view/gameObjects/blocks/Crate.png")));
     }
-
-
-
 }

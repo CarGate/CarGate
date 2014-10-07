@@ -30,7 +30,8 @@ public class Car extends GameObject implements ICar {
 	 * @param gameObjects
 	 */
     protected Car(Point location, Vector<GameObject> gameObjects, Direction defaultDirection) throws IOException {
-        super(location, ImageIO.read(Car.class.getResource("../resources/gameObjects/cars/Car.png")), gameObjects);
+        super(location, gameObjects);
+        this.setImage(ImageIO.read(getClass().getClassLoader().getResource("de/thm/iem/CarGate/resources/view/gameObjects/cars/Car.png")));
         this.direction = defaultDirection;
         this.speed = 1;
 	}

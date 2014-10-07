@@ -34,19 +34,15 @@ public abstract class GameObject extends JPanel {
      * @param suffix      a optional suffix e.g. _closed  for doors
      * @param gameObjects the IVector of gameObjects
      */
-    public GameObject(Point bounds, BufferedImage skin, Vector<GameObject> gameObjects) {
-
-        this.skin = skin;
-        this.getBounds().height = this.skin.getHeight(null);
-        this.getBounds().width = this.skin.getWidth(null);
+    public GameObject(Point bounds, Vector<GameObject> gameObjects) {
         this.setLocation(new Point(bounds.x - (this.getBounds().height / 2), bounds.y - this.getBounds().height / 2));
         this.gameObjects = gameObjects;
         this.gameObjects.add(this);
         this.setVisible(true);
     }
 
-    public GameObject(Point bounds, BufferedImage skin, Vector<GameObject> gameObjects, IEffectable effectable) {
-        this(bounds, skin, gameObjects);
+    public GameObject(Point bounds, Vector<GameObject> gameObjects, IEffectable effectable) {
+        this(bounds, gameObjects);
         this.setEffectable(effectable);
     }
 
@@ -55,6 +51,10 @@ public abstract class GameObject extends JPanel {
             ob.repaint();
             System.out.println(ob.getX() + " " + ob.getY());
         }
+    }
+
+    public void setImage(BufferedImage skin) {
+        this.skin = skin;
     }
 
     public void setSkin(BufferedImage skin) {

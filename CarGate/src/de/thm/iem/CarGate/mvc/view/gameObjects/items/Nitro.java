@@ -30,7 +30,9 @@ public class Nitro extends GameObject implements ICollectable {
 	 * @param gameObjects
 	 */
     public Nitro(Point location, Vector<GameObject> gameObjects) throws IOException {
-        super(location, ImageIO.read(Nitro.class.getResource("../resources/gameObjects/items/Nitro.png")), gameObjects);
+        super(location, gameObjects);
+        this.setImage(ImageIO.read(getClass().getClassLoader().getResource("de/thm/iem/CarGate/resources/view/gameObjects/items/Nitro.png")));
+
     }
 
 

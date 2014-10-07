@@ -27,7 +27,8 @@ public class Spike extends GameObject{
 	 * @param gameObjects
 	 */
     public Spike(Point location, Vector<GameObject> gameObjects) throws IOException {
-        super(location, ImageIO.read(Spike.class.getResource("../resources/gameObjects/blocks/Spike.png")), gameObjects);
+        super(location, gameObjects);
+        this.setImage(ImageIO.read(getClass().getClassLoader().getResource("de/thm/iem/CarGate/resources/view/gameObjects/blocks/Spike.png")));
     }
 
 
