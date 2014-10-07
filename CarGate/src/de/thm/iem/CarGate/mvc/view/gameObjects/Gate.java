@@ -27,9 +27,9 @@ public class Gate extends GameObject {
 	 * @param gameObjects
 	 */
 	public Gate(Point location, Vector<GameObject> gameObjects) {
-        super(location, ImageIO.read(getClass().getResource("../resources/gameObjects/Gate_closed.png")), gameObjects);
+        super(location, ImageIO.read(Gate.class.getResource("../resources/gameObjects/Gate_closed.png")), gameObjects);
         try {
-            this.closeable = new Close(ImageIO.read(getClass().getResource("../resources/gameObjects/Gate_closed.png"), ImageIO.read(getClass().getResource("../resources/gameObjects/Gate_opened.png")));
+            this.closeable = new Close(ImageIO.read(Gate.class.getResource("../resources/gameObjects/Gate_closed.png"), ImageIO.read(Gate.class.getResource("../resources/gameObjects/Gate_opened.png")));
             //new Close(ImageIO.read(new File("de/thm/iem/CarGate/resourses/view/Gate_closed.png")), ImageIO.read(new File("de/thm/iem/CarGate/resourses/view/Gate_opened.png")));
 
 
